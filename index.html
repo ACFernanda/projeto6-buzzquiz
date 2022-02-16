@@ -24,10 +24,11 @@
         <p>Você não criou nenhum quizz ainda :(</p>
         <button class="btn-createquizz" onclick="createQuizz()">Criar Quiz</button>
         </article>
-      <article class="all-quizzes">
-      <h1 class="name-quizzes">Todos os Quizzes</h1>
-      </article>
-      <article class="user-quizzes">
+      <section>
+        <article class="all-quizzes">
+        </article>
+      </section>
+      <article class="user-quizzes hide">
         <h1 class="name-quizzes">Seus Quizzes</h1>
       <button class="icon-createquizz hide"></button>
       </article>
@@ -160,7 +161,7 @@
       </main>
 
     </section>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="scripts.js"></script>
   </body>
