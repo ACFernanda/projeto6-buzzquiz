@@ -23,6 +23,48 @@ header {
   z-index: 100;
 }
 
+/*---- CSS TELA 1 ------*/
+
+.list-quizzes {
+  display: flex;
+  justify-content: center;
+}
+.create-quizz {
+  width: 85%;
+  height: 181px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px dashed #d5d5d5;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-createquizz {
+  width: 151px;
+  height: 40px;
+  border: 1px dashed #ec362d;
+  background-color: #fafafa;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 21px;
+  color: #ec362d;
+  margin-bottom: 33px;
+}
+
+article p {
+  width: 250px;
+  height: 107px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #b9b9b9;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+}
+
 /*---- CSS TELA 2 ------*/
 
 .playquizz-page {
@@ -109,46 +151,62 @@ header {
   margin-bottom: 18px;
 }
 
-/*---- CSS TELA 3 ------*/
+/* CSS TELA 3*/
 
-.list-quizzes {
+.quizz-basic-information h2 {
+  font-size: 20px;
+  color: #000000;
+  padding: 106px 0 29px 0;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
-.create-quizz {
-  width: 85%;
-  height: 181px;
+
+.quizz-basic-information {
+  background-color: #fafafa;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.quizz-basic-information ul {
+  padding: 21px 0px 15px 0px;
+  background-color: #ffffff;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizz-basic-information input {
+  width: 90vw;
+  height: 46px;
+  border: 1px solid #d1d1d1;
   border-radius: 5px;
-  border: 1px dashed #d5d5d5;
-  margin-top: 100px;
+  margin-bottom: 9px;
+}
+
+.quizz-basic-information input::placeholder {
+  padding-left: 14px;
+  font-size: 19px;
+  font-style: italic;
+  color: #bababa;
+}
+
+.quizz-basic-information button {
+  width: 90vw;
+  height: 54px;
+  margin: 29px 27px 0 24px;
+  display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.btn-createquizz {
-  width: 151px;
-  height: 40px;
-  border: 1px dashed #ec362d;
-  background-color: #fafafa;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 21px;
-  color: #ec362d;
-  margin-bottom: 33px;
-}
-
-article p {
-  width: 250px;
-  height: 107px;
-  font-size: 20px;
-  line-height: 23px;
-  color: #b9b9b9;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  margin-top: 7px;
+  background-color: #ec362d;
+  border-radius: 15px;
+  color: #fff5f4;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
 }
 
 /** DEIXAR O HIDE SEMPRE NO FINAL **/
