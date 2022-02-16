@@ -34,7 +34,7 @@ header {
   justify-content: center;
 }
 .create-quizz {
-  width: 85%;
+  width: 340px;
   height: 181px;
   display: flex;
   flex-direction: column;
@@ -69,34 +69,32 @@ article p {
   margin-top: 7px;
 }
 
-<<<<<<< HEAD
 .icon-createquizz {
   width: 31px;
   height: 30px;
   background-color:#EC362D;
-  border-radius: 500px;
+  border-radius: 500px; 
+  border: none;
+  background-image: url(/img/Vector.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
 }
 
 .all-quizzes {
-  width: 100vw;
-  height: 500px;
   display: flex;
-  margin-left: 18px;
   margin-top: 35px;
+ 
 }
 
-.all-quizzes h1 {
-  font-size: 20px;
-  line-height: 23px; 
-  font-weight: bold;
-}
-.user-quizzes {
+.name-quizzes {
   font-size: 20px;
   line-height: 23px; 
   font-weight: bold;
   margin-left: 18px;
 }
-=======
+
+
 /*---- CSS TELA 2 ------*/
 
 .playquizz-page {
@@ -246,4 +244,3 @@ article p {
 .hide {
   display: none;
 }
->>>>>>> 72289827206d6f678d496305a18d55920e2fb4c9
