@@ -19,7 +19,7 @@
 
     <!------ HTML TELA 1 ------->
 
-    <section class="list-quizzes">
+    <section class="list-quizzes hide">
       <article class="create-quizz">
         <p>Você não criou nenhum quizz ainda :(</p>
         <button class="btn-createquizz" onclick="createQuizz()">
@@ -37,9 +37,9 @@
 
     <!---- HTML TELA 2  ------>
 
-    <div class="playquizz-page hide">
+    <div class="playquizz-page">
       <div class="quizz-title-container">
-        <img src="./img/teste.jpeg" />
+        <img src="#" />
         <span>Título do Quizz</span>
       </div>
 
@@ -66,7 +66,7 @@
           </div>
         </div>
       </div>
-      <div class="end-quizz-container">
+      <div class="end-quizz-container hide">
         <div class="end-quizz-title">
           <span>88% de acerto: blablabla</span>
         </div>
@@ -74,7 +74,9 @@
         <p>Parabéns blablablabla blablablabla blablabla blablabla</p>
       </div>
       <div class="end-quizz-buttons">
-        <button class="restart">Reiniciar Quizz</button>
+        <button onclick="(restartQuizz())" class="restart">
+          Reiniciar Quizz
+        </button>
         <button onclick="(returnToHomePage())" class="back-home">
           Voltar pra home
         </button>
