@@ -12,7 +12,7 @@ header {
   color: #ffffff;
   height: 69px;
   background-color: #ec362d;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -21,6 +21,74 @@ header {
   left: 0;
   right: 0;
   z-index: 100;
+}
+
+/*---- CSS TELA 1 ------*/
+
+.list-quizzes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.create-quizz {
+  width: 340px;
+  height: 181px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px dashed #d5d5d5;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 18px;
+}
+
+.btn-createquizz {
+  width: 151px;
+  height: 40px;
+  border: 1px dashed #ec362d;
+  background-color: #fafafa;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 21px;
+  color: #ec362d;
+  margin-bottom: 33px;
+}
+
+article p {
+  width: 250px;
+  height: 107px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #b9b9b9;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+}
+
+.icon-createquizz {
+  width: 31px;
+  height: 30px;
+  background-color: #ec362d;
+  border-radius: 500px;
+  border: none;
+  background-image: url("/img/Vector.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+}
+
+.all-quizzes {
+  display: flex;
+  margin-top: 35px;
+}
+
+.name-quizzes {
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: bold;
+  margin-left: 18px;
 }
 
 /*---- CSS TELA 2 ------*/
@@ -178,44 +246,136 @@ header {
 
 /*---- CSS TELA 3 ------*/
 
-.list-quizzes {
+.screen3 h2 {
+  font-size: 20px;
+  color: #000000;
+  padding: 106px 0 29px;
   display: flex;
+  align-items: center;
   justify-content: center;
 }
-.create-quizz {
-  width: 85%;
-  height: 181px;
+
+.screen3 {
+  background-color: #fafafa;
+  overflow-x: hidden;
+}
+
+.screen3 ul {
+  padding: 21px 0 15px;
+  background-color: #ffffff;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen3 input {
+  width: 90vw;
+  height: 46px;
+  border: 1px solid #d1d1d1;
   border-radius: 5px;
-  border: 1px dashed #d5d5d5;
-  margin-top: 100px;
+  margin-bottom: 9px;
+}
+
+.screen3 input::placeholder {
+  padding-left: 14px;
+  font-size: 19px;
+  font-style: italic;
+  color: #bababa;
+}
+
+.screen3 textarea {
+  width: 90vw;
+  height: 177px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+}
+
+.screen3 textarea::placeholder {
+  padding-left: 14px;
+  padding-top: 13px;
+  font-size: 19px;
+  font-style: italic;
+  color: #bababa;
+  font-family: "Roboto", sans-serif;
+}
+
+.screen3 button {
+  width: 324px;
+  height: 54px;
+  margin: 29px auto 61px;
+  display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ec362d;
+  border-radius: 15px;
+  color: #fff5f4;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
 }
 
-.btn-createquizz {
-  width: 151px;
-  height: 40px;
-  border: 1px dashed #ec362d;
-  background-color: #fafafa;
-  border-radius: 50px;
-  text-align: center;
-  font-size: 21px;
-  color: #ec362d;
-  margin-bottom: 33px;
-}
-
-article p {
-  width: 250px;
-  height: 107px;
+.screen3 h3 {
   font-size: 20px;
-  line-height: 23px;
-  color: #b9b9b9;
-  text-align: center;
+  color: #000000;
+  background-color: #ffffff;
+  font-weight: 700;
+}
+
+.screen3 h3:nth-child(2) {
+  padding-top: 27px;
+}
+
+.quizz-basic-information {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.quizz-questions {
+  height: 1350px;
+}
+
+main {
+  padding: 0 17px;
+}
+
+.questions {
+  background-color: #ffffff;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 7px;
+  width: 100%;
+  height: 74px;
+  margin: 24px 0 22px;
+}
+
+.questions ion-icon {
+  font-size: 20px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (min-width: 1100px) {
+  .screen3,
+  ul,
+  input {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  body {
+    background-color: #fafafa;
+  }
+
+  /**Tela 1**/
+  .create-quizz {
+    width: 1051px;
+    height: 181px;
+  }
 }
 
 /** DEIXAR O HIDE SEMPRE NO FINAL **/
