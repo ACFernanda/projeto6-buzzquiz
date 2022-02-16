@@ -108,3 +108,51 @@ header {
   color: #000000;
   margin-bottom: 18px;
 }
+
+/*---- CSS TELA 3 ------*/
+
+.list-quizzes {
+  display: flex;
+  justify-content: center;
+}
+.create-quizz {
+  width: 85%;
+  height: 181px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  border: 1px dashed #d5d5d5;
+  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-createquizz {
+  width: 151px;
+  height: 40px;
+  border: 1px dashed #ec362d;
+  background-color: #fafafa;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 21px;
+  color: #ec362d;
+  margin-bottom: 33px;
+}
+
+article p {
+  width: 250px;
+  height: 107px;
+  font-size: 20px;
+  line-height: 23px;
+  color: #b9b9b9;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+}
+
+/** DEIXAR O HIDE SEMPRE NO FINAL **/
+
+.hide {
+  display: none;
+}
