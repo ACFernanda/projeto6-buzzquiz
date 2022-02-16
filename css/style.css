@@ -17,28 +17,30 @@ header {
   height: 69px;
   background-color: #ec362d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 100;
 }
+
+/*---- CSS TELA 1 ------*/
 
 .list-quizzes {
   display: flex;
   justify-content: center;
 }
 .create-quizz {
-  width: 340px;
+  width: 85%;
   height: 181px;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  box-sizing: border-box;
-  border: 1px dashed #D5D5D5;
-  margin-top: 100px; 
+  border: 1px dashed #d5d5d5;
+  margin-top: 100px;
   justify-content: center;
   align-items: center;
 }
@@ -47,8 +49,7 @@ header {
   width: 151px;
   height: 40px;
   border: 1px dashed #ec362d;
-  background-color: #FAFAFA;
-  box-sizing: border-box;
+  background-color: #fafafa;
   border-radius: 50px;
   text-align: center;
   font-size: 21px;
@@ -61,13 +62,14 @@ article p {
   height: 107px;
   font-size: 20px;
   line-height: 23px;
-  color: #B9B9B9;
+  color: #b9b9b9;
   text-align: center;
   display: flex;
   align-items: center;
   margin-top: 7px;
 }
 
+<<<<<<< HEAD
 .icon-createquizz {
   width: 31px;
   height: 30px;
@@ -94,3 +96,154 @@ article p {
   font-weight: bold;
   margin-left: 18px;
 }
+=======
+/*---- CSS TELA 2 ------*/
+
+.playquizz-page {
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 69px;
+}
+
+.quizz-title-container {
+  width: 100vw;
+  height: 142px;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.quizz-title-container img {
+  width: 100%;
+  height: 142px;
+  filter: brightness(60%);
+}
+
+.quizz-title-container span {
+  position: absolute;
+  top: 40%;
+  right: 15%;
+  left: 15%;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.question-container {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.question-title {
+  margin-top: 38px;
+  background-color: #434ca0;
+  width: 95%;
+  height: 89px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+}
+
+.question-title p {
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.answers-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 3%;
+}
+
+.answer {
+  width: 47%;
+  flex-shrink: unset;
+}
+
+.answer img {
+  width: 100%;
+  margin-bottom: 6px;
+}
+
+.answer p {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 18px;
+}
+
+/* CSS TELA 3*/
+
+.quizz-basic-information h2 {
+  font-size: 20px;
+  color: #000000;
+  padding: 106px 0 29px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizz-basic-information {
+  background-color: #fafafa;
+  height: 100vh;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.quizz-basic-information ul {
+  padding: 21px 0px 15px 0px;
+  background-color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.quizz-basic-information input {
+  width: 90vw;
+  height: 46px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  margin-bottom: 9px;
+}
+
+.quizz-basic-information input::placeholder {
+  padding-left: 14px;
+  font-size: 19px;
+  font-style: italic;
+  color: #bababa;
+}
+
+.quizz-basic-information button {
+  width: 90vw;
+  height: 54px;
+  margin: 29px 27px 0 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ec362d;
+  border-radius: 15px;
+  color: #fff5f4;
+  font-size: 18px;
+  font-weight: 400;
+  border: none;
+}
+
+/** DEIXAR O HIDE SEMPRE NO FINAL **/
+
+.hide {
+  display: none;
+}
+>>>>>>> 72289827206d6f678d496305a18d55920e2fb4c9
