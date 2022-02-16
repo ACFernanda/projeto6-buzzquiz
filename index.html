@@ -63,7 +63,7 @@
 
     <!------ HTML TELA 3 ------->
 
-    <section class="quizz-basic-information">
+    <section class="quizz-basic-information hide screen3">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
@@ -80,47 +80,83 @@
       <button>Prosseguir pra criar perguntas</button>
     </section>
 
-    <section class="quizz-questions hide">
+    <section class="quizz-questions hide screen3">
       <h2><b>Crie suas perguntas</b></h2>
 
-      <h3>Pergunta 1</h3>
+      <main>
+        <h3>Pergunta 1</h3>
 
-      <ul>
-        <li><input type="text" placeholder="Texto da pergunta" /></li>
-        <li><input type="text" placeholder="Cor de fundo da pergunta" /></li>
-      </ul>
+        <ul>
+          <li><input type="text" placeholder="Texto da pergunta" /></li>
+          <li><input type="text" placeholder="Cor de fundo da pergunta" /></li>
+        </ul>
 
-      <h3>Resposta correta</h3>
+        <h3>Resposta correta</h3>
 
-      <ul>
-        <li><input type="text" placeholder="Resposta correta" /></li>
-        <li><input type="text" placeholder="URL da imagem" /></li>
-      </ul>
+        <ul>
+          <li><input type="text" placeholder="Resposta correta" /></li>
+          <li><input type="text" placeholder="URL da imagem" /></li>
+        </ul>
 
-      <h3>Respostas incorretas</h3>
+        <h3>Respostas incorretas</h3>
 
-      <ul>
-        <li><input type="text" placeholder="Resposta incorreta 1" /></li>
-        <li><input type="text" placeholder="URL da imagem 1" /></li>
-      </ul>
+        <ul>
+          <li><input type="text" placeholder="Resposta incorreta 1" /></li>
+          <li><input type="text" placeholder="URL da imagem 1" /></li>
+        </ul>
 
-      <ul>
-        <li><input type="text" placeholder="Resposta incorreta 2" /></li>
-        <li><input type="text" placeholder="URL da imagem 2" /></li>
-      </ul>
+        <ul>
+          <li><input type="text" placeholder="Resposta incorreta 2" /></li>
+          <li><input type="text" placeholder="URL da imagem 2" /></li>
+        </ul>
 
-      <ul>
-        <li><input type="text" placeholder="Resposta incorreta 3" /></li>
-        <li><input type="text" placeholder="URL da imagem 3" /></li>
-      </ul>
+        <ul>
+          <li><input type="text" placeholder="Resposta incorreta 3" /></li>
+          <li><input type="text" placeholder="URL da imagem 3" /></li>
+        </ul>
 
-      <h3>Pergunta 2</h3>
+        <div class="questions">
+          <h3>Pergunta 2</h3>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
 
-      <h3>Pergunta 3</h3>
+        <div class="questions">
+          <h3>Pergunta 3</h3>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+        <button>Prosseguir pra criar níveis</button>
+      </main>
 
-      <button>Prosseguir pra criar níveis</button>
     </section>
 
+    <section class="quizz-levels screen3">
+      <h2><b>Agora, decida os níveis!</b></h2>
+
+      <main>
+        <h3>Nível 1</h3>
+
+        <ul>
+          <li><input type="text" placeholder="Título do nível"/></li>
+          <li><input type="text" placeholder="% de acerto mínima"/></li>
+          <li><input type="text" placeholder="URL da imagem do nível"/></li>
+          <li><textarea placeholder="Descrição do nível"></textarea></li>
+        </ul>
+
+        <div class="questions">
+          <h3>Nível 2</h3>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+
+        <div class="questions">
+          <h3>Nível 3</h3>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
+        <button>Finalizar Quizz</button>
+      </main>
+
+    </section>
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>
