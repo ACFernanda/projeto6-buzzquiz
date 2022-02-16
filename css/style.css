@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -37,8 +41,6 @@ header {
   margin-top: 100px; 
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto';
- 
 }
 
 .btn-createquizz {
@@ -49,11 +51,9 @@ header {
   box-sizing: border-box;
   border-radius: 50px;
   text-align: center;
-  font-family: 'Roboto';
   font-size: 21px;
   color: #ec362d;
   margin-bottom: 33px;
-
 }
 
 article p {
@@ -66,4 +66,31 @@ article p {
   display: flex;
   align-items: center;
   margin-top: 7px;
+}
+
+.icon-createquizz {
+  width: 31px;
+  height: 30px;
+  background-color:#EC362D;
+  border-radius: 500px;
+}
+
+.all-quizzes {
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  margin-left: 18px;
+  margin-top: 35px;
+}
+
+.all-quizzes h1 {
+  font-size: 20px;
+  line-height: 23px; 
+  font-weight: bold;
+}
+.user-quizzes {
+  font-size: 20px;
+  line-height: 23px; 
+  font-weight: bold;
+  margin-left: 18px;
 }
