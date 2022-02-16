@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+.hidden {
+  display: none;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -30,7 +34,7 @@ header {
   justify-content: center;
 }
 .create-quizz {
-  width: 85%;
+  width: 340px;
   height: 181px;
   display: flex;
   flex-direction: column;
@@ -64,6 +68,32 @@ article p {
   align-items: center;
   margin-top: 7px;
 }
+
+.icon-createquizz {
+  width: 31px;
+  height: 30px;
+  background-color:#EC362D;
+  border-radius: 500px; 
+  border: none;
+  background-image: url(/img/Vector.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+}
+
+.all-quizzes {
+  display: flex;
+  margin-top: 35px;
+ 
+}
+
+.name-quizzes {
+  font-size: 20px;
+  line-height: 23px; 
+  font-weight: bold;
+  margin-left: 18px;
+}
+
 
 /*---- CSS TELA 2 ------*/
 
