@@ -3,8 +3,8 @@ let renderQuizz = [];
 //* Tela 1 -> Tela 3 *//
 
 function createQuizz() {
-    document.querySelector(".quizz-basic-information").classList.remove("hide");
-    document.querySelector(".list-quizzes").classList.add("hide");
+  document.querySelector(".quizz-basic-information").classList.remove("hide");
+  document.querySelector(".list-quizzes").classList.add("hide");
 }
 
 const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");

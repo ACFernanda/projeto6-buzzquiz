@@ -22,24 +22,24 @@
     <section class="list-quizzes">
       <article class="create-quizz">
         <p>Você não criou nenhum quizz ainda :(</p>
-        <button class="btn-createquizz" onclick="createQuizz()">Criar Quiz</button>
-        </article>
-      <section>
-        <article class="all-quizzes">
-        </article>
-      </section>
-      <article class="user-quizzes hide">
-        <h1 class="name-quizzes">Seus Quizzes</h1>
-      <button class="icon-createquizz hide"></button>
+        <button class="btn-createquizz" onclick="createQuizz()">
+          Criar Quiz
+        </button>
       </article>
-      </section>
-    
+      <article class="all-quizzes">
+        <h1 class="name-quizzes">Todos os Quizzes</h1>
+      </article>
+      <article class="user-quizzes">
+        <h1 class="name-quizzes">Seus Quizzes</h1>
+        <button class="icon-createquizz hide"></button>
+      </article>
+    </section>
 
     <!---- HTML TELA 2  ------>
 
     <div class="playquizz-page hide">
       <div class="quizz-title-container">
-        <img src="./teste.jpeg" />
+        <img src="./img/teste.jpeg" />
         <span>Título do Quizz</span>
       </div>
 
@@ -49,27 +49,40 @@
         </div>
         <div class="answers-container">
           <div class="answer">
-            <img src="./teste.jpeg" />
+            <img src="./img/teste.jpeg" />
             <p>Nome opção resposta</p>
           </div>
           <div class="answer">
-            <img src="./teste.jpeg" />
+            <img src="./img/teste.jpeg" />
             <p>Nome opção resposta</p>
           </div>
           <div class="answer">
-            <img src="./teste.jpeg" />
+            <img src="./img/teste.jpeg" />
             <p>Nome opção resposta</p>
           </div>
           <div class="answer">
-            <img src="./teste.jpeg" />
+            <img src="./img/teste.jpeg" />
             <p>Nome opção resposta</p>
           </div>
         </div>
       </div>
+      <div class="end-quizz-container">
+        <div class="end-quizz-title">
+          <span>88% de acerto: blablabla</span>
+        </div>
+        <img src="./img/teste.jpeg" />
+        <p>Parabéns blablablabla blablablabla blablabla blablabla</p>
+      </div>
+      <div class="end-quizz-buttons">
+        <button class="restart">Reiniciar Quizz</button>
+        <button onclick="(returnToHomePage())" class="back-home">
+          Voltar pra home
+        </button>
+      </div>
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information hide screen3">
+    <section class="quizz-basic-information screen3 hide">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
@@ -86,7 +99,7 @@
       <button>Prosseguir pra criar perguntas</button>
     </section>
 
-    <section class="quizz-questions hide screen3">
+    <section class="quizz-questions screen3 hide">
       <h2><b>Crie suas perguntas</b></h2>
 
       <main>
@@ -132,7 +145,6 @@
         </div>
         <button>Prosseguir pra criar níveis</button>
       </main>
-
     </section>
 
     <section class="quizz-levels screen3 hide">
@@ -142,9 +154,9 @@
         <h3>Nível 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Título do nível"/></li>
-          <li><input type="text" placeholder="% de acerto mínima"/></li>
-          <li><input type="text" placeholder="URL da imagem do nível"/></li>
+          <li><input type="text" placeholder="Título do nível" /></li>
+          <li><input type="text" placeholder="% de acerto mínima" /></li>
+          <li><input type="text" placeholder="URL da imagem do nível" /></li>
           <li><textarea placeholder="Descrição do nível"></textarea></li>
         </ul>
 
@@ -159,7 +171,6 @@
         </div>
         <button>Finalizar Quizz</button>
       </main>
-
     </section>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
