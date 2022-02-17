@@ -85,25 +85,57 @@ article p {
 }
 
 .all-quizzes {
-    display: flex;
-    margin-top: 35px;
-    flex-direction: column;
-    gap: 100px;
-    align-items: center;
+  width: 340px;
+  height: 181px;
+  position: relative; 
+  margin-top: 14px;
+}
+
+.all-quizzes::after {
+  display: block;
+  position: absolute;
+  border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 64.58%,
+    #000000 100%
+  ); 
+  height: 100%;
+  width: 340px;
+  content: "";
+}
+
+.name-quizzes {
+  font-size: 20px;
+  position: absolute;
+  bottom: 20px;
+  z-index: 1;
+  color: white;
+  margin-left: 20px;
 }
 
 .img-quizzes {
-    width: 340px;
-    height: 181px;
-    border-radius: 5px;
-    position: absolute;
+  border-radius: 5px;
+  height: 100%;
+  width: 340px;
+  object-fit: cover;
+  position: absolute; 
     
 }
-.server-name-quizzes {
+
+.teste {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servername-quizzes {
   font-size: 20px;
   line-height: 23px;
   font-weight: bold;
   width: 100vw;
+  margin-top: 35px;
 }
 
 .user-quizzes {
