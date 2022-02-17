@@ -5,6 +5,7 @@ let renderQuizz = [];
 function createQuizz() {
   document.querySelector(".quizz-basic-information").classList.remove("hide");
   document.querySelector(".list-quizzes").classList.add("hide");
+  document.querySelector(".all-quizzes").classList.add("hide");
 }
 
 const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
@@ -22,7 +23,7 @@ function renderQuizzOnScreen(response) {
         <article class="all-quizzes">
         <img src="${renderQuizz[i].image}" class="img-quizzes"> 
         <h1 class="name-quizzes">${renderQuizz[i].title}<h1>
-        </article>    `
+        </article> `
     }   
  } 
  
