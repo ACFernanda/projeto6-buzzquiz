@@ -177,5 +177,5 @@ function createLevels() {
 
 function endCreation() {
   document.querySelector(".quizz-levels").classList.add("hide");
-  /*falta a tela de sucesso*/
+  document.querySelector(".conclude-screen").classList.remove("hide");
 }

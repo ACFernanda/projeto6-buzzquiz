@@ -422,6 +422,46 @@ main {
   font-size: 20px;
 }
 
+.conclude-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.conclude-screen h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  margin-top: 39px;
+}
+
+.conclude-screen img {
+  margin-top: 35px;
+  margin-bottom: 24px;
+}
+
+.acess-button {
+  width: 220.32px;
+  height: 44px;
+  background: #EC362D;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 9px;
+  color:#FFF5F4;
+  font-size: 18px;
+
+}
+
+.return-button {
+  background-color: #E5E5E5;
+  color: #818181;
+  border: none;
+  font-size: 18px;
+
+}
+
 /* RESPONSIVIDADE */
 
 @media (min-width: 1100px) {
@@ -439,6 +479,18 @@ main {
 
   body {
     background-color: #fafafa;
+  }
+
+  .conclude-screen h1 {
+    margin-top: calc(69px + 71px);
+    margin-bottom: 46px;
+  }
+
+  .conclude-screen img {
+    margin-bottom: 45px;
+  }
+  .acess-button {
+    margin-bottom: 9px;
   }
 
   /**Tela 1**/
