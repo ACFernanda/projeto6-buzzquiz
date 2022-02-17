@@ -42,7 +42,7 @@
 
     <div class="playquizz-page hide">
       <div class="quizz-title-container">
-        <img src="./img/teste.jpeg" />
+        <img src="#" />
         <span>Título do Quizz</span>
       </div>
 
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="end-quizz-container">
+      <div class="end-quizz-container hide">
         <div class="end-quizz-title">
           <span>88% de acerto: blablabla</span>
         </div>
@@ -77,8 +77,10 @@
         <p>Parabéns blablablabla blablablabla blablabla blablabla</p>
       </div>
       <div class="end-quizz-buttons">
-        <button class="restart">Reiniciar Quizz</button>
-        <button onclick="(returnToHomePage())" class="back-home">
+        <button onclick="restartQuizz()" class="restart">
+          Reiniciar Quizz
+        </button>
+        <button onclick="returnToHomePage()" class="back-home">
           Voltar pra home
         </button>
       </div>
