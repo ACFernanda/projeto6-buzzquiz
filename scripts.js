@@ -147,9 +147,9 @@ function urlIsValid() {
 function questionsNumberIsValid() {
   let questionsNumber = document.querySelector(".quizz-basic-information .questions-number").value;
   questionsNumber = parseInt(questionsNumber);
-  console.log(questionsNumber)
-  if (questionsNumber < 3) {
-    alert("Você precisa de, no mínimo, 3 perguntas!")
+  console.log(isNaN(questionsNumber) === true)
+  if ((questionsNumber < 3) || (isNaN(questionsNumber) === true)) {
+    alert("Use números a partir de 3");
     document.querySelector(".quizz-basic-information .levels-number").disabled = true;
   }
   document.querySelector(".quizz-basic-information .levels-number").disabled = false;
@@ -158,9 +158,9 @@ function questionsNumberIsValid() {
 function levelsNumberIsValid() {
   let levelsNumber = document.querySelector(".quizz-basic-information .levels-number").value;
   levelsNumber = parseInt(levelsNumber);
-  if (levelsNumber < 2) {
+  if ((levelsNumber < 2) || (isNaN(levelsNumber) === true)) {
     alert("Você precisa de, no mínimo, 2 níveis!")
-  } else {
+  } else if (levelsNumber >= 2) {
     goToPageCreateQuestions()
   }
 }
