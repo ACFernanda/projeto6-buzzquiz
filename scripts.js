@@ -17,9 +17,9 @@ function renderQuizzOnScreen(response) {
   for (let i = 0; i < renderQuizz.length; i++) {
     render.innerHTML += `
         <article class="all-quizzes">
-        <img onclick = "openQuizz()" src="${renderQuizz[i].image}" class="img-quizzes"> 
-        <h1 class="name-quizzes">${renderQuizz[i].title}<h1>
-        </article>    `;
+        <img onclick = "openQuizz(this)" src="${renderQuizz[i].image}" class="img-quizzes" id="${renderQuizz[i].id}"> 
+        <h1 class="name-quizzes">${renderQuizz[i].title}</h1>
+        </article>`;
   }
 }
 
@@ -36,7 +36,10 @@ function createQuizz() {
 
 //* Tela 2*//
 
-function openQuizz() {
+function openQuizz(thisQuizz) {
+  let quizzID = thisQuizz.id;
+  console.log(quizzID);
+
   const homePage = document.querySelector(".list-quizzes");
   const playQuizzPage = document.querySelector(".playquizz-page.hide");
 
@@ -47,18 +50,34 @@ function openQuizz() {
 
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0;
+
+  const promise = axios.get(
+    `https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${quizzID}`
+  );
+  promise.then(renderOneQuizz);
+  promise.catch(errorScreen);
 }
 
-function renderOneQuizz() {
-  renderQuizzTitle();
-  renderQuizzQuestions();
+function renderOneQuizz(selectedQuizz) {
+  const infoQuizz = selectedQuizz.data;
+
+  const quizzTitle = infoQuizz.title; // RETORNA STRING
+  const quizzImg = infoQuizz.image; // RETORNA URL DA IMAGEM
+  const quizzQuestions = infoQuizz.questions; // RETORNA ARRAY
+  const scoreLevels = infoQuizz.levels; // RETORNA ARRAY
+
+  renderQuizzHeader(quizzTitle, quizzImg);
+  //renderQuizzQuestions(quizzID);
 }
 
-function renderQuizzTitle() {
-  const quizzTitleText = document.querySelector(
-    "quizz-title-container span"
-  ).innerHTML;
-  const quizzTitleImg = document.querySelector("img").src;
+function renderQuizzHeader(quizzTitle, quizzImg) {
+  const quizzTitleText = document.querySelector(".quizz-title-container span");
+  const quizzTitleImg = document.querySelector(".quizz-title-container img");
+
+  if (quizzTitleText !== null || quizzTitleImg !== null) {
+    quizzTitleText.innerHTML = quizzTitle;
+    quizzTitleImg.src = quizzImg;
+  }
 }
 
 function renderQuizzQuestions() {}
