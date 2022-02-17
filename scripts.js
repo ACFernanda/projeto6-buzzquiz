@@ -32,10 +32,26 @@ function errorScreen(error) {
 function createQuizz() {
   document.querySelector(".quizz-basic-information").classList.remove("hide");
   document.querySelector(".list-quizzes").classList.add("hide");
+  document.querySelector(".all-quizzes").classList.add("hide");
 }
 
 //* Tela 2*//
 
+function renderQuizzOnScreen(response) {
+    renderQuizz = response.data;
+    console.log(renderQuizz);
+    const render = document.querySelector(".all-quizzes");
+    console.log(render);
+    
+    for (let i = 0; i < renderQuizz.length; i++) {
+        render.innerHTML += `
+        <article class="all-quizzes">
+        <img src="${renderQuizz[i].image}" class="img-quizzes"> 
+        <h1 class="name-quizzes">${renderQuizz[i].title}<h1>
+        </article> `
+    }   
+ } 
+ 
 function openQuizz(thisQuizz) {
   let quizzID = thisQuizz.id;
   console.log(quizzID);
