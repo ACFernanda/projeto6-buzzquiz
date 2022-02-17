@@ -90,7 +90,7 @@
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information screen3">
+    <section class="quizz-basic-information screen3 hide">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
@@ -107,7 +107,7 @@
       <button onclick="createQuestions()">Prosseguir pra criar perguntas</button>
     </section>
 
-    <section class="quizz-questions screen3 hide">
+    <section class="quizz-questions screen3">
       <h2><b>Crie suas perguntas</b></h2>
 
       <main>
@@ -115,31 +115,31 @@
 
         <ul>
           <li><input class="question-text" type="text" placeholder="Texto da pergunta" /></li>
-          <li><input class="question-color" type="text" placeholder="Cor de fundo da pergunta" /></li>
+          <li><input onclick="textIsValid()" class="question-color" type="text" placeholder="Cor de fundo da pergunta" /></li>
         </ul>
 
         <h3>Resposta correta</h3>
 
         <ul>
-          <li><input class="right-answer" type="text" placeholder="Resposta correta" /></li>
-          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem" /></li>
+          <li><input onclick="colorIsValid()" class="right-answer" type="text" placeholder="Resposta correta" /></li>
+          <li><input onclick="rightAnswerIsValid()" class="right-img-url" type="text" placeholder="URL da imagem" /></li>
         </ul>
 
         <h3>Respostas incorretas</h3>
 
         <ul>
-          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 1" /></li>
-          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 1" /></li>
+          <li><input onclick="rightAnswerUrlIsValid()" class="wrong-answer1" type="text" placeholder="Resposta incorreta 1" /></li>
+          <li><input onclick="wrongAnswerIsValid()" class="wrong-img-url1" type="text" placeholder="URL da imagem 1" /></li>
         </ul>
 
         <ul>
-          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 2" /></li>
-          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 2" /></li>
+          <li><input class="wrong-answer2" type="text" placeholder="Resposta incorreta 2" /></li>
+          <li><input class="wrong-img-url2" type="text" placeholder="URL da imagem 2" /></li>
         </ul>
 
         <ul>
-          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 3" /></li>
-          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 3" /></li>
+          <li><input class="wrong-answer3" type="text" placeholder="Resposta incorreta 3" /></li>
+          <li><input class="wrong-img-url3" type="text" placeholder="URL da imagem 3" /></li>
         </ul>
 
         <div class="questions">
@@ -178,18 +178,16 @@
           <ion-icon name="create-outline"></ion-icon>
         </div>
         <button onclick="endCreation()">Finalizar Quizz</button>
-        </main>
-        </section>
-
-        <section class="conclude-screen hide">
-          <h1>Seu quiz está pronto!</h1>
-          <img src="#">
-          <button class="acess-button">Acessar Quiz</button>
-          <button class="return-button">Voltar pra Home</button>
-        
-        </section>
       </main>
     </section>
+
+    <section class="conclude-screen hide">
+      <h1>Seu quiz está pronto!</h1>
+      <img src="#">
+      <button class="acess-button">Acessar Quiz</button>
+      <button class="return-button">Voltar pra Home</button>
+    </section>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="scripts.js"></script>
