@@ -19,7 +19,7 @@
 
     <!------ HTML TELA 1 ------->
 
-    <section class="list-quizzes">
+    <section class="list-quizzes hide">
       <article class="create-quizz">
         <p>Você não criou nenhum quizz ainda :(</p>
         <button class="btn-createquizz" onclick="createQuizz()">
@@ -84,21 +84,21 @@
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information screen3 hide">
+    <section class="quizz-basic-information screen3">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
-        <li><input type="text" placeholder="Título do seu quizz" /></li>
-        <li><input type="text" placeholder="URL da imagem do seu quizz" /></li>
+        <li><input class="quizz-title" type="text" placeholder="Título do seu quizz" /></li>
+        <li><input onclick="titleIsValid()" class="quizz-img-url" type="text" placeholder="URL da imagem do seu quizz" /></li>
         <li>
-          <input type="text" placeholder="Quantidade de perguntas do quizz" />
+          <input onclick="urlIsValid()" class="questions-number" type="text" placeholder="Quantidade de perguntas do quizz" />
         </li>
         <li>
-          <input type="text" placeholder="Quantidade de níveis do quizz" />
+          <input onclick="questionsNumberIsValid()" class="levels-number" type="text" placeholder="Quantidade de níveis do quizz" />
         </li>
       </ul>
 
-      <button>Prosseguir pra criar perguntas</button>
+      <button onclick="createQuestions()">Prosseguir pra criar perguntas</button>
     </section>
 
     <section class="quizz-questions screen3 hide">
@@ -108,32 +108,32 @@
         <h3>Pergunta 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Texto da pergunta" /></li>
-          <li><input type="text" placeholder="Cor de fundo da pergunta" /></li>
+          <li><input class="question-text" type="text" placeholder="Texto da pergunta" /></li>
+          <li><input class="question-color" type="text" placeholder="Cor de fundo da pergunta" /></li>
         </ul>
 
         <h3>Resposta correta</h3>
 
         <ul>
-          <li><input type="text" placeholder="Resposta correta" /></li>
-          <li><input type="text" placeholder="URL da imagem" /></li>
+          <li><input class="right-answer" type="text" placeholder="Resposta correta" /></li>
+          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem" /></li>
         </ul>
 
         <h3>Respostas incorretas</h3>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 1" /></li>
-          <li><input type="text" placeholder="URL da imagem 1" /></li>
+          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 1" /></li>
+          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 1" /></li>
         </ul>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 2" /></li>
-          <li><input type="text" placeholder="URL da imagem 2" /></li>
+          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 2" /></li>
+          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 2" /></li>
         </ul>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 3" /></li>
-          <li><input type="text" placeholder="URL da imagem 3" /></li>
+          <li><input class="wrong-answer" type="text" placeholder="Resposta incorreta 3" /></li>
+          <li><input class="quizz-img-url" type="text" placeholder="URL da imagem 3" /></li>
         </ul>
 
         <div class="questions">
@@ -145,7 +145,7 @@
           <h3>Pergunta 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button>Prosseguir pra criar níveis</button>
+        <button onclick="createLevels()">Prosseguir pra criar níveis</button>
       </main>
     </section>
 

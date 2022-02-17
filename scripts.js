@@ -96,3 +96,70 @@ function returnToHomePage() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+/* Tela 3 */
+
+function createQuestions() {
+  levelsNumberIsValid()
+}
+
+function titleIsValid() {
+  let titleValue = document.querySelector(".quizz-title").value;
+  if ((titleValue.length < 20) || (titleValue.length > 65)) {
+    alert("O título precisa ter entre 20 e 65 caracteres!")
+    document.querySelector(".quizz-basic-information .quizz-img-url").disabled = true;
+    document.querySelector(".quizz-basic-information .questions-number").disabled = true;
+    document.querySelector(".quizz-basic-information .levels-number").disabled = true;
+  }
+  document.querySelector(".quizz-basic-information .quizz-img-url").disabled = false;
+  document.querySelector(".quizz-basic-information .questions-number").disabled = false;
+  document.querySelector(".quizz-basic-information .levels-number").disabled = false;
+}
+
+function urlIsValid() {
+  let url = document.querySelector(".quizz-basic-information .quizz-img-url").value;
+  if ((url.startsWith('http')) && ((url.endsWith('.jpg')) || (url.endsWith('.jpeg')) || (url.endsWith('.png')))) {
+  } else {
+    alert("Preencha a URL corretamente!")
+    document.querySelector(".quizz-basic-information .questions-number").disabled = true;
+    document.querySelector(".quizz-basic-information .levels-number").disabled = true;
+  }
+  document.querySelector(".quizz-basic-information .questions-number").disabled = false;
+  document.querySelector(".quizz-basic-information .levels-number").disabled = false;
+}
+
+function questionsNumberIsValid() {
+  let questionsNumber = document.querySelector(".quizz-basic-information .questions-number").value;
+  questionsNumber = parseInt(questionsNumber);
+  console.log(questionsNumber)
+  if (questionsNumber < 3) {
+    alert("Você precisa de, no mínimo, 3 perguntas!")
+    document.querySelector(".quizz-basic-information .levels-number").disabled = true;
+  }
+  document.querySelector(".quizz-basic-information .levels-number").disabled = false;
+}
+
+function levelsNumberIsValid() {
+  let levelsNumber = document.querySelector(".quizz-basic-information .levels-number").value;
+  levelsNumber = parseInt(levelsNumber);
+  if (levelsNumber < 2) {
+    alert("Você precisa de, no mínimo, 2 níveis!")
+  } else {
+    goToPageCreateQuestions()
+  }
+}
+
+function goToPageCreateQuestions(){
+  document.querySelector(".quizz-basic-information").classList.add("hide");
+  document.querySelector(".quizz-questions").classList.remove("hide");
+}
+
+function createLevels() {
+  document.querySelector(".quizz-questions").classList.add("hide");
+  document.querySelector(".quizz-levels").classList.remove("hide");
+}
+
+function endCreation() {
+  document.querySelector(".quizz-levels").classList.add("hide");
+  /*falta a tela de sucesso*/
+}
