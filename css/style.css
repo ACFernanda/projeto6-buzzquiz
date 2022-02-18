@@ -30,10 +30,10 @@ button:hover {
 /*---- CSS TELA 1 ------*/
 
 .list-quizzes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .create-quizz {
   width: 340px;
@@ -85,29 +85,27 @@ article p {
 }
 
 .all-quizzes {
-    display: flex;
-    margin-top: 35px;
-    flex-direction: column;
-    gap: 100px;
-    margin-left: 18px;
-    align-items: center;
-
+  display: flex;
+  margin-top: 35px;
+  flex-direction: column;
+  gap: 100px;
+  margin-left: 18px;
+  align-items: center;
 }
 
 .img-quizzes {
-    width: 340px;
-    height: 181px;
-    border-radius: 5px;
-    position: absolute;
+  width: 340px;
+  height: 181px;
+  border-radius: 5px;
+  position: absolute;
 }
 
 .name-quizzes {
-    font-size: 19px;
-    color: black;
-    position: relative;
-    bottom: 7;
+  font-size: 19px;
+  color: black;
+  position: relative;
+  bottom: 7;
 }
-
 
 .name-quizzes {
   font-size: 20px;
@@ -159,10 +157,14 @@ article p {
   margin-bottom: 20px;
 }
 
+.question-title-container {
+  width: 100%;
+  padding: 3%;
+}
+
 .question-title {
   margin-top: 38px;
   background-color: #434ca0;
-  width: 95%;
   height: 89px;
   display: flex;
   align-items: center;

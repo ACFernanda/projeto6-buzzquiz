@@ -38,7 +38,6 @@ function createQuizz() {
 
 function openQuizz(thisQuizz) {
   let quizzID = thisQuizz.id;
-  console.log(quizzID);
 
   const homePage = document.querySelector(".list-quizzes");
   const playQuizzPage = document.querySelector(".playquizz-page.hide");
@@ -66,11 +65,11 @@ function renderOneQuizz(selectedQuizz) {
   const quizzQuestions = infoQuizz.questions; // RETORNA ARRAY
   const scoreLevels = infoQuizz.levels; // RETORNA ARRAY
 
-  renderQuizzHeader(quizzTitle, quizzImg);
-  //renderQuizzQuestions(quizzID);
+  renderQuizzBanner(quizzTitle, quizzImg);
+  quizzQuestions.forEach(renderOneQuestionContainer);
 }
 
-function renderQuizzHeader(quizzTitle, quizzImg) {
+function renderQuizzBanner(quizzTitle, quizzImg) {
   const quizzTitleText = document.querySelector(".quizz-title-container span");
   const quizzTitleImg = document.querySelector(".quizz-title-container img");
 
@@ -80,7 +79,42 @@ function renderQuizzHeader(quizzTitle, quizzImg) {
   }
 }
 
-function renderQuizzQuestions() {}
+function renderOneQuestionContainer(quizzQuestion) {
+  console.log(quizzQuestion);
+  const allQuestionsContainer = document.querySelector(
+    ".all-questions-container"
+  );
+  let answers = quizzQuestion.answers;
+  let backgroungColor = quizzQuestion.color;
+  let questionContainerInnerHTML;
+  let answerContainerInnerHTML = "";
+
+  questionContainerInnerHTML = `<div class="question-title" style="background-color: ${backgroungColor}">
+  <p>${quizzQuestion.title}</p>
+</div>`;
+
+  for (let i = 0; i < answers.length; i++) {
+    let option = answers[i].text;
+    let optionImg = answers[i].image;
+    let isCorrectAnswer = answers[i].isCorrectAnswer;
+
+    answerContainerInnerHTML += `<div class="answer ${isCorrectAnswer}">
+    <img src="${optionImg}" />
+    <p>${option}</p>
+    </div>`;
+  }
+  console.log(answerContainerInnerHTML);
+
+  allQuestionsContainer.innerHTML += `
+  <div class="question-container">
+    <div class="question-title-container">
+      ${questionContainerInnerHTML}
+    </div>
+    <div class="answers-container">
+      ${answerContainerInnerHTML}
+    </div>
+  </div>`;
+}
 
 function restartQuizz() {}
 
