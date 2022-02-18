@@ -348,6 +348,10 @@ article p {
   outline: none;
 }
 
+.screen3 textarea:focus {
+  outline: none;
+}
+
 .screen3 input::placeholder {
   padding-left: 14px;
   font-size: 19px;

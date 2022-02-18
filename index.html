@@ -18,7 +18,7 @@
     <header>BuzzQuizz</header>
 
     <!------ HTML TELA 1 ------->
-    <div class="home-screen">
+    <div class="home-screen hide">
       <section class="list-quizzes">
         <article class="create-quizz">
           <p>Você não criou nenhum quizz ainda :(</p>
@@ -68,40 +68,21 @@
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information screen3 hide">
+    <section class="quizz-basic-information screen3">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
         <li>
-          <input
-            class="quizz-title"
-            type="text"
-            placeholder="Título do seu quizz"
-          />
+          <input class="quizz-title" type="text" placeholder="Título do seu quizz"/>
         </li>
         <li>
-          <input
-            onclick="titleIsValid()"
-            class="quizz-img-url"
-            type="text"
-            placeholder="URL da imagem do seu quizz"
-          />
+          <input onclick="titleIsValid()" class="quizz-img-url" type="text" placeholder="URL da imagem do seu quizz"/>
         </li>
         <li>
-          <input
-            onclick="urlIsValid()"
-            class="questions-number"
-            type="text"
-            placeholder="Quantidade de perguntas do quizz"
-          />
+          <input onclick="urlIsValid()" class="questions-number" type="text" placeholder="Quantidade de perguntas do quizz"/>
         </li>
         <li>
-          <input
-            onclick="questionsNumberIsValid()"
-            class="levels-number"
-            type="text"
-            placeholder="Quantidade de níveis do quizz"
-          />
+          <input onclick="questionsNumberIsValid()" class="levels-number" type="text" placeholder="Quantidade de níveis do quizz"/>
         </li>
       </ul>
 
@@ -118,19 +99,10 @@
 
         <ul>
           <li>
-            <input
-              class="question-text"
-              type="text"
-              placeholder="Texto da pergunta"
-            />
+            <input class="question-text" type="text" placeholder="Texto da pergunta"/>
           </li>
           <li>
-            <input
-              onclick="textIsValid()"
-              class="question-color"
-              type="text"
-              placeholder="Cor de fundo da pergunta"
-            />
+            <input onclick="textIsValid()" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
           </li>
         </ul>
 
@@ -138,20 +110,10 @@
 
         <ul>
           <li>
-            <input
-              onclick="colorIsValid()"
-              class="right-answer"
-              type="text"
-              placeholder="Resposta correta"
-            />
+            <input onclick="colorIsValid()" class="right-answer" type="text" placeholder="Resposta correta"/>
           </li>
           <li>
-            <input
-              onclick="rightAnswerIsValid()"
-              class="right-img-url"
-              type="text"
-              placeholder="URL da imagem"
-            />
+            <input onclick="rightAnswerIsValid()" class="right-img-url" type="text" placeholder="URL da imagem"/>
           </li>
         </ul>
 
@@ -159,54 +121,28 @@
 
         <ul>
           <li>
-            <input
-              onclick="rightAnswerUrlIsValid()"
-              class="wrong-answer1"
-              type="text"
-              placeholder="Resposta incorreta 1"
-            />
+            <input onclick="rightAnswerUrlIsValid()" class="wrong-answer1" type="text" placeholder="Resposta incorreta 1"/>
           </li>
           <li>
-            <input
-              onclick="wrongAnswerIsValid()"
-              class="wrong-img-url1"
-              type="text"
-              placeholder="URL da imagem 1"
-            />
+            <input onclick="wrongAnswerIsValid()" class="wrong-img-url1" type="text" placeholder="URL da imagem 1"/>
           </li>
         </ul>
 
         <ul>
           <li>
-            <input
-              class="wrong-answer2"
-              type="text"
-              placeholder="Resposta incorreta 2"
-            />
+            <input class="wrong-answer2" type="text" placeholder="Resposta incorreta 2"/>
           </li>
           <li>
-            <input
-              class="wrong-img-url2"
-              type="text"
-              placeholder="URL da imagem 2"
-            />
+            <input class="wrong-img-url2" type="text" placeholder="URL da imagem 2"/>
           </li>
         </ul>
 
         <ul>
           <li>
-            <input
-              class="wrong-answer3"
-              type="text"
-              placeholder="Resposta incorreta 3"
-            />
+            <input class="wrong-answer3" type="text" placeholder="Resposta incorreta 3"/>
           </li>
           <li>
-            <input
-              class="wrong-img-url3"
-              type="text"
-              placeholder="URL da imagem 3"
-            />
+            <input class="wrong-img-url3" type="text" placeholder="URL da imagem 3"/>
           </li>
         </ul>
 
@@ -219,8 +155,8 @@
           <h3>Pergunta 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button onclick="createLevels()">Prosseguir pra criar níveis</button>
       </main>
+      <button onclick="createLevels()">Prosseguir pra criar níveis</button>
     </section>
 
     <section class="quizz-levels screen3 hide">
@@ -230,23 +166,18 @@
         <h3>Nível 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Título do nível" /></li>
-          <li><input type="text" placeholder="% de acerto mínima" /></li>
-          <li><input type="text" placeholder="URL da imagem do nível" /></li>
-          <li><textarea placeholder="Descrição do nível"></textarea></li>
+          <li><input class="level-title" type="text" placeholder="Título do nível" /></li>
+          <li><input onclick="levelTitleIsValid()" class="hit-percentage" type="text" placeholder="% de acerto mínima" /></li>
+          <li><input onclick="hitPercentageIsValid()" class="level-img-url" type="text" placeholder="URL da imagem do nível" /></li>
+          <li><textarea onclick="LevelUrlIsValid()" class="level-description" placeholder="Descrição do nível"></textarea></li>
         </ul>
 
         <div class="questions">
           <h3>Nível 2</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-
-        <div class="questions">
-          <h3>Nível 3</h3>
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
-        <button onclick="endCreation()">Finalizar Quizz</button>
       </main>
+      <button onclick="concludeCreation()">Finalizar Quizz</button>
     </section>
 
     <section class="conclude-screen hide">

@@ -127,87 +127,75 @@ function returnToHomePage() {
 
 /* Tela 3 */
 
-function createQuestions() {
-  levelsNumberIsValid();
-}
+let test = 0;
+let questionsNumber = 0;
+let levelsNumber = 0;
+
+/* tela informações básicas */
 
 function titleIsValid() {
   let titleValue = document.querySelector(".quizz-title").value;
   if (titleValue.length < 20 || titleValue.length > 65) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
-    document.querySelector(
-      ".quizz-basic-information .quizz-img-url"
-    ).disabled = true;
-    document.querySelector(
-      ".quizz-basic-information .questions-number"
-    ).disabled = true;
-    document.querySelector(
-      ".quizz-basic-information .levels-number"
-    ).disabled = true;
+    document.querySelector(".quizz-img-url").disabled = true;
   }
-  document.querySelector(
-    ".quizz-basic-information .quizz-img-url"
-  ).disabled = false;
-  document.querySelector(
-    ".quizz-basic-information .questions-number"
-  ).disabled = false;
-  document.querySelector(
-    ".quizz-basic-information .levels-number"
-  ).disabled = false;
+  document.querySelector(".quizz-img-url").disabled = false;
 }
 
 function urlIsValid() {
-  let url = document.querySelector(
-    ".quizz-basic-information .quizz-img-url"
-  ).value;
-  if (
-    url.startsWith("http") &&
-    (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
-  ) {
+  let url = document.querySelector(".quizz-img-url").value;
+  if (url.startsWith("http") && (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))) {
   } else {
     alert("Preencha a URL corretamente!");
-    document.querySelector(
-      ".quizz-basic-information .questions-number"
-    ).disabled = true;
-    document.querySelector(
-      ".quizz-basic-information .levels-number"
-    ).disabled = true;
+    document.querySelector(".questions-number").disabled = true;
   }
-  document.querySelector(
-    ".quizz-basic-information .questions-number"
-  ).disabled = false;
-  document.querySelector(
-    ".quizz-basic-information .levels-number"
-  ).disabled = false;
+  document.querySelector(".questions-number").disabled = false;
 }
 
 function questionsNumberIsValid() {
-  let questionsNumber = document.querySelector(
-    ".quizz-basic-information .questions-number"
-  ).value;
+  questionsNumber = document.querySelector(".questions-number").value;
   questionsNumber = parseInt(questionsNumber);
-  console.log(isNaN(questionsNumber) === true);
   if (questionsNumber < 3 || isNaN(questionsNumber) === true) {
     alert("Use números a partir de 3");
-    document.querySelector(
-      ".quizz-basic-information .levels-number"
-    ).disabled = true;
+    document.querySelector(".levels-number").disabled = true;
   }
-  document.querySelector(
-    ".quizz-basic-information .levels-number"
-  ).disabled = false;
+  document.querySelector(".levels-number").disabled = false;
+  if (questionsNumber > 3){
+    for(let i=0; i < questionsNumber - 3; i++){
+      let main = document.querySelector(".quizz-questions main");
+      main.innerHTML += `
+      <div class="questions">
+        <h3>Pergunta ${i+4}</h3>
+        <ion-icon name="create-outline"></ion-icon>
+      </div>
+      `
+    }
+  }
 }
 
 function levelsNumberIsValid() {
-  let levelsNumber = document.querySelector(
-    ".quizz-basic-information .levels-number"
-  ).value;
+  levelsNumber = document.querySelector(".levels-number").value;
   levelsNumber = parseInt(levelsNumber);
   if (levelsNumber < 2 || isNaN(levelsNumber) === true) {
     alert("Você precisa de, no mínimo, 2 níveis!");
-  } else if (levelsNumber >= 2) {
+  } else if (levelsNumber = 2) {
+    goToPageCreateQuestions();
+  } else if (levelsNumber > 2) {
+    for(let i=0; i < levelsNumber - 2; i++){
+      let main = document.querySelector(".quizz-levels main");
+      main.innerHTML += `
+      <div class="questions">
+        <h3>Nível ${i+3}</h3>
+        <ion-icon name="create-outline"></ion-icon>
+      </div>
+      `
+    }
     goToPageCreateQuestions();
   }
+}
+
+function createQuestions() {
+  levelsNumberIsValid();
 }
 
 function goToPageCreateQuestions() {
@@ -215,62 +203,75 @@ function goToPageCreateQuestions() {
   document.querySelector(".quizz-questions").classList.remove("hide");
 }
 
+/* tela de perguntas */
+
 function textIsValid() {
   let textValue = document.querySelector(".question-text").value;
   if (textValue.length < 20) {
     alert("O título precisa ter, no mínimo 20 caracteres!");
-    document.querySelector(".quizz-questions .question-color").disabled = true;
+    document.querySelector(".question-color").disabled = true;
   }
-  document.querySelector(".quizz-questions .question-color").disabled = false;
+  document.querySelector(".question-color").disabled = false;
 }
 
 function colorIsValid() {
-  /*falta validar as letras de A a F*/
+  colorCharactersIsValid();
   let colorValue = document.querySelector(".question-color").value;
-  if (colorValue.length !== 7 || !colorValue.startsWith("#")) {
+  if (colorValue.length !== 7 || !colorValue.startsWith("#") || test !== 6) {
     alert("A cor precisa ser colocada em modelo hexadecimal!");
-    document.querySelector(".quizz-questions .right-answer").disabled = true;
+    test = 0;
+    document.querySelector(".right-answer").disabled = true;
   }
-  document.querySelector(".quizz-questions .right-answer").disabled = false;
+  document.querySelector(".right-answer").disabled = false;
+}
+
+function colorCharactersIsValid(){ 
+  let colorValue = document.querySelector(".question-color").value;
+  let validLetters = ['a','b','c','d','e','f','0','1','2','3','4','5','6','7','8','9']
+  for(let i = 1; i < colorValue.length; i++){
+    for(let j = 0; j < validLetters.length; j++){
+      if (colorValue[i].toUpperCase() === validLetters[j].toUpperCase()){
+        test = test + 1
+      }
+    }
+  }
+  return test
 }
 
 function rightAnswerIsValid() {
   let rightAnswerValue = document.querySelector(".right-answer").value;
   if (rightAnswerValue === "") {
     alert("A caixa de resposta correta não pode estar vazia!");
-    document.querySelector(".quizz-questions .right-img-url").disabled = true;
+    document.querySelector(".right-img-url").disabled = true;
   }
-  document.querySelector(".quizz-questions .right-img-url").disabled = false;
+  document.querySelector(".right-img-url").disabled = false;
 }
 
 function rightAnswerUrlIsValid() {
   let rightAnswerUrlValue = document.querySelector(".right-img-url").value;
   if (
-    rightAnswerUrlValue.startsWith("http") &&
-    (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
+    rightAnswerUrlValue.startsWith("http") &&(rightAnswerUrlValue.endsWith(".jpg") || rightAnswerUrlValue.endsWith(".jpeg") || rightAnswerUrlValue.endsWith(".png"))
   ) {
   } else {
     alert("Preencha corretamente a URL da resposta certa!");
-    document.querySelector(".quizz-questions .wrong-answer1").disabled = true;
+    document.querySelector(".wrong-answer1").disabled = true;
   }
-  document.querySelector(".quizz-questions .wrong-answer1").disabled = false;
+  document.querySelector(".wrong-answer1").disabled = false;
 }
 
 function wrongAnswerIsValid() {
   let wrongAnswerValue = document.querySelector(".wrong-answer1").value;
   if (wrongAnswerValue === "") {
     alert("Precisa existir pelo menos uma resposta errada!");
-    document.querySelector(".quizz-questions .wrong-img-url1").disabled = true;
+    document.querySelector(".wrong-img-url1").disabled = true;
   }
-  document.querySelector(".quizz-questions .wrong-img-url1").disabled = false;
+  document.querySelector(".wrong-img-url1").disabled = false;
 }
 
 function wrongAnswerUrlIsValid() {
   let wrongAnswerUrlValue = document.querySelector(".wrong-img-url1").value;
   if (
-    wrongAnswerUrlValue.startsWith("http") &&
-    (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
-  ) {
+    wrongAnswerUrlValue.startsWith("http") && (wrongAnswerUrlValue.endsWith(".jpg") || wrongAnswerUrlValue.endsWith(".jpeg") || wrongAnswerUrlValue.endsWith(".png"))) {
     goToPageCreateLevels();
   } else {
     alert("Preencha corretamente a URL da primeira resposta incorreta!");
@@ -288,9 +289,51 @@ function goToPageCreateLevels() {
 
 /*falta validar as respostas incorretas não obrigatórias*/
 
-/*falta validar a tela dos níveis*/
+/* tela de níveis */
 
-function endCreation() {
+function levelTitleIsValid() {
+  let levelTitle = document.querySelector(".level-title").value;
+  if (levelTitle.length < 10) {
+    alert("O título precisa ter, no mínimo 10 caracteres!");
+    document.querySelector(".hit-percentage").disabled = true;
+  }
+  document.querySelector(".hit-percentage").disabled = false;
+}
+
+function hitPercentageIsValid() {
+  let hit = document.querySelector(".hit-percentage").value;
+  hit = parseInt(hit);
+  if ((hit < 0) || (hit > 100) || (isNaN(hit) === true)) {
+    alert("Escolha um número entre 0 e 100!");
+    document.querySelector(".level-img-url").disabled = true;
+  }
+  document.querySelector(".level-img-url").disabled = false;
+}
+
+function LevelUrlIsValid() {
+  let levelUrl = document.querySelector(".level-img-url").value;
+  if (levelUrl.startsWith("http") && (levelUrl.endsWith(".jpg") || levelUrl.endsWith(".jpeg") || levelUrl.endsWith(".png"))) {
+  } else {
+    alert("Preencha a URL do primeiro nível corretamente!");
+    document.querySelector(".level-description").disabled = true;
+  }
+  document.querySelector(".level-description").disabled = false;
+}
+
+function levelDescriptionIsValid() {
+  let levelDescription = document.querySelector(".level-description").value;
+  if (levelDescription.length < 30) {
+    alert("A descrição precisa ter, no mínimo 30 caracteres!");
+  } else {
+    goToPageConcludeCreation()
+  }
+}
+
+function concludeCreation() {
+  levelDescriptionIsValid();
+}
+
+function goToPageConcludeCreation(){
   document.querySelector(".quizz-levels").classList.add("hide");
   document.querySelector(".conclude-screen").classList.remove("hide");
 }
