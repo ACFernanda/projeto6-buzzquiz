@@ -28,7 +28,7 @@
         </article>
       </section>
       <section>
-        <article class="user-quizzes">
+        <article class="user-quizzes hide">
           <h1 class="user-name-quizzes">Seus Quizzes</h1>
           <button class="icon-createquizz"></button>
         </article>
@@ -252,8 +252,8 @@
     <section class="conclude-screen hide">
       <h1>Seu quiz está pronto!</h1>
       <img src="#" />
-      <button class="acess-button">Acessar Quiz</button>
-      <button class="return-button">Voltar pra Home</button>
+      <button class="acess-button" onclick="newQuizzAcess()">Acessar Quiz</button>
+      <button class="return-button" onclick="returnHome()">Voltar pra Home</button>
     </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

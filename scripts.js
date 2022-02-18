@@ -294,3 +294,10 @@ function endCreation() {
   document.querySelector(".quizz-levels").classList.add("hide");
   document.querySelector(".conclude-screen").classList.remove("hide");
 }
+
+function returnHome() {
+  document.querySelector(".conclude-screen").classList.add("hide");
+  document.querySelector(".home-screen").classList.remove("hide");
+  document.querySelector(".create-quizz").classList.add("hide");
+  document.querySelector(".user-quizzes").classList.remove("hide");
+}
