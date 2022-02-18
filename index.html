@@ -19,20 +19,23 @@
 
     <!------ HTML TELA 1 ------->
 
-    <section class="list-quizzes">
+    <section class="list-quizzes hide">
       <article class="create-quizz">
         <p>Você não criou nenhum quizz ainda :(</p>
         <button class="btn-createquizz" onclick="createQuizz()">
           Criar Quiz
         </button>
       </article>
-      <article class="all-quizzes">
-        <h1 class="name-quizzes">Todos os Quizzes</h1>
+    </section>
+    <section>
+      <article class="user-quizzes hide">
+        <h1 class="user-name-quizzes">Seus Quizzes</h1>
+        <button class="icon-createquizz"></button>
       </article>
-      <article class="user-quizzes">
-        <h1 class="name-quizzes">Seus Quizzes</h1>
-        <button class="icon-createquizz hide"></button>
-      </article>
+    </section>
+    <section class="teste hide">
+      <h1 class="servername-quizzes">Todos os Quizzes</h1>
+      <article class="all-quizzes"></article>
     </section>
 
     <!---- HTML TELA 2  ------>
@@ -68,52 +71,142 @@
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
-        <li><input type="text" placeholder="Título do seu quizz" /></li>
-        <li><input type="text" placeholder="URL da imagem do seu quizz" /></li>
         <li>
-          <input type="text" placeholder="Quantidade de perguntas do quizz" />
+          <input
+            class="quizz-title"
+            type="text"
+            placeholder="Título do seu quizz"
+          />
         </li>
         <li>
-          <input type="text" placeholder="Quantidade de níveis do quizz" />
+          <input
+            onclick="titleIsValid()"
+            class="quizz-img-url"
+            type="text"
+            placeholder="URL da imagem do seu quizz"
+          />
+        </li>
+        <li>
+          <input
+            onclick="urlIsValid()"
+            class="questions-number"
+            type="text"
+            placeholder="Quantidade de perguntas do quizz"
+          />
+        </li>
+        <li>
+          <input
+            onclick="questionsNumberIsValid()"
+            class="levels-number"
+            type="text"
+            placeholder="Quantidade de níveis do quizz"
+          />
         </li>
       </ul>
 
-      <button>Prosseguir pra criar perguntas</button>
+      <button onclick="createQuestions()">
+        Prosseguir pra criar perguntas
+      </button>
     </section>
 
-    <section class="quizz-questions screen3 hide">
+    <section class="quizz-questions screen3">
       <h2><b>Crie suas perguntas</b></h2>
 
       <main>
         <h3>Pergunta 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Texto da pergunta" /></li>
-          <li><input type="text" placeholder="Cor de fundo da pergunta" /></li>
+          <li>
+            <input
+              class="question-text"
+              type="text"
+              placeholder="Texto da pergunta"
+            />
+          </li>
+          <li>
+            <input
+              onclick="textIsValid()"
+              class="question-color"
+              type="text"
+              placeholder="Cor de fundo da pergunta"
+            />
+          </li>
         </ul>
 
         <h3>Resposta correta</h3>
 
         <ul>
-          <li><input type="text" placeholder="Resposta correta" /></li>
-          <li><input type="text" placeholder="URL da imagem" /></li>
+          <li>
+            <input
+              onclick="colorIsValid()"
+              class="right-answer"
+              type="text"
+              placeholder="Resposta correta"
+            />
+          </li>
+          <li>
+            <input
+              onclick="rightAnswerIsValid()"
+              class="right-img-url"
+              type="text"
+              placeholder="URL da imagem"
+            />
+          </li>
         </ul>
 
         <h3>Respostas incorretas</h3>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 1" /></li>
-          <li><input type="text" placeholder="URL da imagem 1" /></li>
+          <li>
+            <input
+              onclick="rightAnswerUrlIsValid()"
+              class="wrong-answer1"
+              type="text"
+              placeholder="Resposta incorreta 1"
+            />
+          </li>
+          <li>
+            <input
+              onclick="wrongAnswerIsValid()"
+              class="wrong-img-url1"
+              type="text"
+              placeholder="URL da imagem 1"
+            />
+          </li>
         </ul>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 2" /></li>
-          <li><input type="text" placeholder="URL da imagem 2" /></li>
+          <li>
+            <input
+              class="wrong-answer2"
+              type="text"
+              placeholder="Resposta incorreta 2"
+            />
+          </li>
+          <li>
+            <input
+              class="wrong-img-url2"
+              type="text"
+              placeholder="URL da imagem 2"
+            />
+          </li>
         </ul>
 
         <ul>
-          <li><input type="text" placeholder="Resposta incorreta 3" /></li>
-          <li><input type="text" placeholder="URL da imagem 3" /></li>
+          <li>
+            <input
+              class="wrong-answer3"
+              type="text"
+              placeholder="Resposta incorreta 3"
+            />
+          </li>
+          <li>
+            <input
+              class="wrong-img-url3"
+              type="text"
+              placeholder="URL da imagem 3"
+            />
+          </li>
         </ul>
 
         <div class="questions">
@@ -125,7 +218,7 @@
           <h3>Pergunta 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button>Prosseguir pra criar níveis</button>
+        <button onclick="createLevels()">Prosseguir pra criar níveis</button>
       </main>
     </section>
 
@@ -151,9 +244,17 @@
           <h3>Nível 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button>Finalizar Quizz</button>
+        <button onclick="endCreation()">Finalizar Quizz</button>
       </main>
     </section>
+
+    <section class="conclude-screen hide">
+      <h1>Seu quiz está pronto!</h1>
+      <img src="#" />
+      <button class="acess-button">Acessar Quiz</button>
+      <button class="return-button">Voltar pra Home</button>
+    </section>
+
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="scripts.js"></script>

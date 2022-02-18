@@ -45,7 +45,6 @@ button:hover {
   margin-top: 100px;
   justify-content: center;
   align-items: center;
-  margin-left: 18px;
 }
 
 .btn-createquizz {
@@ -82,36 +81,74 @@ article p {
   background-position: center;
   background-repeat: no-repeat;
   background-size: 13px 13px;
+  margin-right: 19px;
 }
 
 .all-quizzes {
-  display: flex;
-  margin-top: 35px;
-  flex-direction: column;
-  gap: 100px;
-  margin-left: 18px;
-  align-items: center;
-}
-
-.img-quizzes {
   width: 340px;
   height: 181px;
-  border-radius: 5px;
-  position: absolute;
+  position: relative;
+  margin-top: 14px;
 }
 
-.name-quizzes {
-  font-size: 19px;
-  color: black;
-  position: relative;
-  bottom: 7;
+.all-quizzes::after {
+  display: block;
+  position: absolute;
+  border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 64.58%,
+    #000000 100%
+  );
+  height: 100%;
+  width: 340px;
+  content: "";
 }
 
 .name-quizzes {
   font-size: 20px;
+  position: absolute;
+  bottom: 20px;
+  z-index: 1;
+  color: white;
+  margin-left: 20px;
+}
+
+.img-quizzes {
+  border-radius: 5px;
+  height: 100%;
+  width: 340px;
+  object-fit: cover;
+  position: absolute;
+}
+
+.teste {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servername-quizzes {
+  font-size: 20px;
   line-height: 23px;
   font-weight: bold;
-  margin-left: 18px;
+  width: 100vw;
+  margin-top: 35px;
+}
+
+.user-quizzes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: calc(69px + 38px);
+}
+
+.user-name-quizzes {
+  margin-left: 15px;
+  font-size: 20px;
+  line-height: 23px;
+  font-weight: bold;
 }
 
 /*---- CSS TELA 2 ------*/
@@ -307,6 +344,10 @@ article p {
   margin-bottom: 9px;
 }
 
+.screen3 input:focus {
+  outline: none;
+}
+
 .screen3 input::placeholder {
   padding-left: 14px;
   font-size: 19px;
@@ -383,9 +424,48 @@ main {
   font-size: 20px;
 }
 
+.conclude-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.conclude-screen h1 {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  margin-top: 39px;
+}
+
+.conclude-screen img {
+  margin-top: 35px;
+  margin-bottom: 24px;
+}
+
+.acess-button {
+  width: 220.32px;
+  height: 44px;
+  background: #ec362d;
+  border-radius: 15px;
+  border: none;
+  margin-bottom: 9px;
+  color: #fff5f4;
+  font-size: 18px;
+}
+
+.return-button {
+  background-color: #e5e5e5;
+  color: #818181;
+  border: none;
+  font-size: 18px;
+}
+
 /* RESPONSIVIDADE */
 
 @media (min-width: 1100px) {
+  /*Tela 3*/
   .screen3,
   ul,
   input {
@@ -400,10 +480,34 @@ main {
     background-color: #fafafa;
   }
 
+  .conclude-screen h1 {
+    margin-top: calc(69px + 71px);
+    margin-bottom: 46px;
+  }
+
+  .conclude-screen img {
+    margin-bottom: 45px;
+  }
+  .acess-button {
+    margin-bottom: 9px;
+  }
+
   /**Tela 1**/
   .create-quizz {
     width: 1051px;
     height: 181px;
+  }
+  .user-quizzes {
+    display: flex;
+    justify-content: flex-start;
+    gap: 17px;
+    margin-top: calc(69px + 69px);
+  }
+  .all-quizzes {
+    margin-top: 12px;
+  }
+  .server-name-quizzes {
+    margin-top: 77px;
   }
 
   /**Tela 2**/
