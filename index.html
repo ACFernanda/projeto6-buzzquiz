@@ -18,7 +18,7 @@
     <header>BuzzQuizz</header>
 
     <!------ HTML TELA 1 ------->
-    <div class="home-screen">
+    <div class="home-screen hide">
       <section class="list-quizzes">
         <article class="create-quizz">
           <p>Você não criou nenhum quizz ainda :(</p>
@@ -27,8 +27,8 @@
           </button>
         </article>
       </section>
-      <section class="hide">
-        <article class="user-quizzes">
+      <section>
+        <article class="user-quizzes hide">
           <h1 class="user-name-quizzes">Seus Quizzes</h1>
           <button class="icon-createquizz"></button>
         </article>
@@ -68,7 +68,7 @@
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information screen3 hide">
+    <section class="quizz-basic-information screen3">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
@@ -219,8 +219,8 @@
           <h3>Pergunta 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button onclick="createLevels()">Prosseguir pra criar níveis</button>
       </main>
+      <button onclick="createLevels()">Prosseguir pra criar níveis</button>
     </section>
 
     <section class="quizz-levels screen3 hide">
@@ -230,30 +230,55 @@
         <h3>Nível 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Título do nível" /></li>
-          <li><input type="text" placeholder="% de acerto mínima" /></li>
-          <li><input type="text" placeholder="URL da imagem do nível" /></li>
-          <li><textarea placeholder="Descrição do nível"></textarea></li>
+          <li>
+            <input
+              class="level-title"
+              type="text"
+              placeholder="Título do nível"
+            />
+          </li>
+          <li>
+            <input
+              onclick="levelTitleIsValid()"
+              class="hit-percentage"
+              type="text"
+              placeholder="% de acerto mínima"
+            />
+          </li>
+          <li>
+            <input
+              onclick="hitPercentageIsValid()"
+              class="level-img-url"
+              type="text"
+              placeholder="URL da imagem do nível"
+            />
+          </li>
+          <li>
+            <textarea
+              onclick="LevelUrlIsValid()"
+              class="level-description"
+              placeholder="Descrição do nível"
+            ></textarea>
+          </li>
         </ul>
 
         <div class="questions">
           <h3>Nível 2</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-
-        <div class="questions">
-          <h3>Nível 3</h3>
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
-        <button onclick="endCreation()">Finalizar Quizz</button>
       </main>
+      <button onclick="concludeCreation()">Finalizar Quizz</button>
     </section>
 
     <section class="conclude-screen hide">
       <h1>Seu quiz está pronto!</h1>
       <img src="#" />
-      <button class="acess-button">Acessar Quiz</button>
-      <button class="return-button">Voltar pra Home</button>
+      <button class="acess-button" onclick="newQuizzAcess()">
+        Acessar Quiz
+      </button>
+      <button class="return-button" onclick="returnHome()">
+        Voltar pra Home
+      </button>
     </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
