@@ -91,7 +91,14 @@ article p {
   margin-top: 14px;
 }
 
-.all-quizzes::after {
+.one-quizz {
+  width: 340px;
+  height: 181px;
+  position: relative;
+  margin-top: 14px;
+}
+
+.one-quizz::after {
   display: block;
   position: absolute;
   border-radius: 5px;
@@ -232,6 +239,15 @@ article p {
   margin-bottom: 20px;
 }
 
+.answer.selected {
+  pointer-events: none;
+}
+
+.answer.notSelected {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 .answer img {
   width: 100%;
   margin-bottom: 6px;
@@ -241,6 +257,14 @@ article p {
   font-size: 18px;
   font-weight: 700;
   color: #000000;
+}
+
+.answer.false.color p {
+  color: #ff0b0b;
+}
+
+.answer.true.color p {
+  color: #009c22;
 }
 
 .end-quizz-container {

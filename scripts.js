@@ -14,10 +14,10 @@ function renderQuizzOnScreen(response) {
 
   for (let i = 0; i < renderQuizz.length; i++) {
     render.innerHTML += `
-      <article class="all-quizzes">
-      <img onclick="openQuizz(this)" src="${renderQuizz[i].image}" class="img-quizzes" id="${renderQuizz[i].id}" /> 
-      <h1 class="name-quizzes">${renderQuizz[i].title}</h1>
-      </article>`;
+      <div onclick="openQuizz(this)" class="one-quizz">
+        <img src="${renderQuizz[i].image}" class="img-quizzes" id="${renderQuizz[i].id}" /> 
+        <h1 class="name-quizzes">${renderQuizz[i].title}</h1>
+      </div>`;
   }
 }
 
@@ -35,8 +35,9 @@ function createQuizz() {
 
 //* Tela 2*//
 
-function openQuizz(thisQuizz) {
-  let quizzID = thisQuizz.id;
+function openQuizz(quizzDiv) {
+  const quizzImage = quizzDiv.querySelector("img");
+  const quizzID = quizzImage.id;
 
   const homePage = document.querySelector(".home-screen");
   const playQuizzPage = document.querySelector(".playquizz-page.hide");
@@ -97,12 +98,11 @@ function renderOneQuestionContainer(quizzQuestion) {
     let optionImg = answers[i].image;
     let isCorrectAnswer = answers[i].isCorrectAnswer;
 
-    answerContainerInnerHTML += `<div class="answer ${isCorrectAnswer}">
+    answerContainerInnerHTML += `<div onclick="selectMyAnswer(this)" class="answer ${isCorrectAnswer}">
     <img src="${optionImg}" />
     <p>${option}</p>
     </div>`;
   }
-  console.log(answerContainerInnerHTML);
 
   allQuestionsContainer.innerHTML += `
   <div class="question-container">
@@ -117,6 +117,21 @@ function renderOneQuestionContainer(quizzQuestion) {
 
 function sortArray() {
   return Math.random() - 0.5;
+}
+
+function selectMyAnswer(selectedOption) {
+  const questionAnswersOption = selectedOption.parentNode;
+  const options = questionAnswersOption.querySelectorAll(".answer");
+  console.log(options);
+  for (let i = 0; i < options.length; i++) {
+    if (options[i] !== selectedOption) {
+      options[i].classList.add("notSelected");
+      options[i].classList.add("color");
+    } else {
+      options[i].classList.add("selected");
+      options[i].classList.add("color");
+    }
+  }
 }
 
 function restartQuizz() {}
