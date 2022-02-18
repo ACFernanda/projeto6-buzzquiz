@@ -18,25 +18,26 @@
     <header>BuzzQuizz</header>
 
     <!------ HTML TELA 1 ------->
-
-    <section class="list-quizzes hide">
-      <article class="create-quizz">
-        <p>Você não criou nenhum quizz ainda :(</p>
-        <button class="btn-createquizz" onclick="createQuizz()">
-          Criar Quiz
-        </button>
-      </article>
-    </section>
-    <section>
-      <article class="user-quizzes hide">
-        <h1 class="user-name-quizzes">Seus Quizzes</h1>
-        <button class="icon-createquizz"></button>
-      </article>
-    </section>
-    <section class="teste hide">
-      <h1 class="servername-quizzes">Todos os Quizzes</h1>
-      <article class="all-quizzes"></article>
-    </section>
+    <div class="home-screen">
+      <section class="list-quizzes">
+        <article class="create-quizz">
+          <p>Você não criou nenhum quizz ainda :(</p>
+          <button class="btn-createquizz" onclick="createQuizz()">
+            Criar Quiz
+          </button>
+        </article>
+      </section>
+      <section>
+        <article class="user-quizzes">
+          <h1 class="user-name-quizzes">Seus Quizzes</h1>
+          <button class="icon-createquizz"></button>
+        </article>
+      </section>
+      <section class="teste">
+        <h1 class="servername-quizzes">Todos os Quizzes</h1>
+        <article class="all-quizzes"></article>
+      </section>
+    </div>
 
     <!---- HTML TELA 2  ------>
 
@@ -109,7 +110,7 @@
       </button>
     </section>
 
-    <section class="quizz-questions screen3">
+    <section class="quizz-questions screen3 hide">
       <h2><b>Crie suas perguntas</b></h2>
 
       <main>
