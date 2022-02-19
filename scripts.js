@@ -124,6 +124,7 @@ function sortArray() {
 }
 
 let rightAnswers = 0;
+
 function selectMyAnswer(selectedOption) {
   const questionAnswersOption = selectedOption.parentNode;
   const options = questionAnswersOption.querySelectorAll(".answer");
@@ -170,9 +171,9 @@ function scrollToEndQuizz() {
 }
 
 let score = 0;
-let scoreLevelTitle;
-let scoreLevelImage;
-let scoreLevelText;
+let scoreLevelTitle = "";
+let scoreLevelImage = "";
+let scoreLevelText = "";
 
 function calcScore() {
   score = Math.round((rightAnswers / numberOfQuestions) * 100);
@@ -189,8 +190,8 @@ function calcScore() {
   renderEndQuizzContainer();
 }
 
+const endQuizzContainer = document.querySelector(".end-quizz-container");
 function renderEndQuizzContainer() {
-  const endQuizzContainer = document.querySelector(".end-quizz-container");
   if (endQuizzContainer !== null) {
     endQuizzContainer.innerHTML = `
     <div class="end-quizz-title">
@@ -203,7 +204,33 @@ function renderEndQuizzContainer() {
   }
 }
 
-function restartQuizz() {}
+function restartQuizz() {
+  rightAnswers = 0;
+  score = 0;
+  scoreLevelTitle = "";
+  scoreLevelImage = "";
+  scoreLevelText = "";
+
+  const options = document.querySelectorAll(".answer");
+  for (let i = 0; i < options.length; i++) {
+    options[i].classList.remove("notSelected");
+    options[i].classList.remove("color");
+    options[i].classList.remove("selected");
+  }
+
+  const allQuestionContainers = document.querySelectorAll(
+    ".question-container"
+  );
+  for (let i = 0; i < allQuestionContainers.length; i++) {
+    allQuestionContainers[i].classList.add("not-answered");
+  }
+
+  const endQuizzContainer = document.querySelector(".end-quizz-container");
+  endQuizzContainer.classList.add("hide");
+
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0;
+}
 
 function returnToHomePage() {
   window.location.reload();
