@@ -31,6 +31,7 @@ function createQuizz() {
   document.querySelector(".quizz-basic-information").classList.remove("hide");
   document.querySelector(".list-quizzes").classList.add("hide");
   document.querySelector(".all-quizzes").classList.add("hide");
+  document.querySelector(".user-quizzes").classList.add("hide");
 }
 
 //* Tela 2*//
