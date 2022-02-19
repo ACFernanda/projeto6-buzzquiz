@@ -218,8 +218,8 @@
           <h3>Pergunta 3</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-        <button onclick="createLevels()">Prosseguir pra criar níveis</button>
       </main>
+      <button onclick="createLevels()">Prosseguir pra criar níveis</button>
     </section>
 
     <section class="quizz-levels screen3 hide">
@@ -229,23 +229,44 @@
         <h3>Nível 1</h3>
 
         <ul>
-          <li><input type="text" placeholder="Título do nível" /></li>
-          <li><input type="text" placeholder="% de acerto mínima" /></li>
-          <li><input type="text" placeholder="URL da imagem do nível" /></li>
-          <li><textarea placeholder="Descrição do nível"></textarea></li>
+          <li>
+            <input
+              class="level-title"
+              type="text"
+              placeholder="Título do nível"
+            />
+          </li>
+          <li>
+            <input
+              onclick="levelTitleIsValid()"
+              class="hit-percentage"
+              type="text"
+              placeholder="% de acerto mínima"
+            />
+          </li>
+          <li>
+            <input
+              onclick="hitPercentageIsValid()"
+              class="level-img-url"
+              type="text"
+              placeholder="URL da imagem do nível"
+            />
+          </li>
+          <li>
+            <textarea
+              onclick="LevelUrlIsValid()"
+              class="level-description"
+              placeholder="Descrição do nível"
+            ></textarea>
+          </li>
         </ul>
 
         <div class="questions">
           <h3>Nível 2</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
-
-        <div class="questions">
-          <h3>Nível 3</h3>
-          <ion-icon name="create-outline"></ion-icon>
-        </div>
-        <button onclick="endCreation()">Finalizar Quizz</button>
       </main>
+      <button onclick="concludeCreation()">Finalizar Quizz</button>
     </section>
 
     <section class="conclude-screen hide">
