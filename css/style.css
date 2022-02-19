@@ -29,6 +29,10 @@ button:hover {
 
 /*---- CSS TELA 1 ------*/
 
+.home-screen {
+  overflow-x: clip;
+}
+
 .list-quizzes {
   display: flex;
   flex-direction: column;
@@ -142,6 +146,7 @@ article p {
   font-weight: bold;
   width: 100vw;
   margin-top: 35px;
+  padding-left: 18px;
 }
 
 .user-quizzes {
@@ -149,6 +154,7 @@ article p {
   justify-content: space-between;
   align-items: center;
   margin-top: calc(69px + 38px);
+  padding-left: 6px;
 }
 
 .user-name-quizzes {
@@ -468,8 +474,44 @@ main {
 }
 
 .conclude-screen img {
-  margin-top: 35px;
-  margin-bottom: 24px;
+   border-radius: 5px;
+  height: 100%;
+  width: 340px;
+  object-fit: cover;
+  position: absolute;
+  margin-top: 29px;
+
+}
+
+.img-teste {
+  border-radius: 5px;
+  height: 100%;
+  width: 340px;
+  object-fit: cover;
+  position: absolute;
+  margin-top: 29px;
+}
+
+.gradient {
+  width: 340px;
+  height: 181px;
+  position: relative;
+  margin-top: 14px;
+}
+
+.gradient::after {
+  display: block;
+  position: absolute;
+  border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.5) 64.58%,
+    #000000 100%
+  );
+  height: 100%;
+  width: 340px;
+  content: "";
 }
 
 .acess-button {

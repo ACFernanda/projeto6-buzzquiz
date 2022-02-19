@@ -30,7 +30,7 @@
       <section>
         <article class="user-quizzes hide">
           <h1 class="user-name-quizzes">Seus Quizzes</h1>
-          <button class="icon-createquizz"></button>
+          <button class="icon-createquizz" onclick="createQuizz()"></button>
         </article>
       </section>
       <section class="teste">
@@ -38,7 +38,6 @@
         <article class="all-quizzes"></article>
       </section>
     </div>
-
     <!---- HTML TELA 2  ------>
 
     <div class="playquizz-page hide">
@@ -49,13 +48,7 @@
 
       <div class="all-questions-container"></div>
 
-      <div class="end-quizz-container hide">
-        <div class="end-quizz-title">
-          <span>88% de acerto: blablabla</span>
-        </div>
-        <img src="./img/teste.jpeg" />
-        <p>Parabéns blablablabla blablablabla blablabla blablabla</p>
-      </div>
+      <div class="end-quizz-container hide"></div>
 
       <div class="end-quizz-buttons">
         <button onclick="restartQuizz()" class="restart">
@@ -272,7 +265,8 @@
 
     <section class="conclude-screen hide">
       <h1>Seu quiz está pronto!</h1>
-      <img src="#" />
+      <div class="gradient"></div>
+      <img src="./img/teste.jpeg" class="img-test" />
       <button class="acess-button" onclick="newQuizzAcess()">
         Acessar Quiz
       </button>

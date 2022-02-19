@@ -31,6 +31,7 @@ function createQuizz() {
   document.querySelector(".quizz-basic-information").classList.remove("hide");
   document.querySelector(".list-quizzes").classList.add("hide");
   document.querySelector(".all-quizzes").classList.add("hide");
+  document.querySelector(".user-quizzes").classList.add("hide");
 }
 
 //* Tela 2*//
@@ -453,6 +454,7 @@ function goToPageConcludeCreation() {
   document.querySelector(".conclude-screen").classList.remove("hide");
 }
 
+//retorna pra home - tela 2 listando os quizzes do usuário
 function returnHome() {
   document.querySelector(".conclude-screen").classList.add("hide");
   document.querySelector(".home-screen").classList.remove("hide");
