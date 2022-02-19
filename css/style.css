@@ -40,7 +40,7 @@ button:hover {
   align-items: center;
 }
 .create-quizz {
-  width: 340px;
+  width: 90%;
   height: 181px;
   display: flex;
   flex-direction: column;
@@ -89,21 +89,20 @@ article p {
 }
 
 .all-quizzes {
-  width: 340px;
-  height: 181px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
   margin-top: 14px;
 }
 
 .one-quizz {
-  width: 340px;
   height: 181px;
+  width: 100%;
   position: relative;
   margin-top: 14px;
 }
 
 .one-quizz::after {
-  display: block;
   position: absolute;
   border-radius: 5px;
   background: linear-gradient(
@@ -113,7 +112,7 @@ article p {
     #000000 100%
   );
   height: 100%;
-  width: 340px;
+  width: 100%;
   content: "";
 }
 
@@ -129,7 +128,7 @@ article p {
 .img-quizzes {
   border-radius: 5px;
   height: 100%;
-  width: 340px;
+  width: 100%;
   object-fit: cover;
   position: absolute;
 }
@@ -144,9 +143,8 @@ article p {
   font-size: 20px;
   line-height: 23px;
   font-weight: bold;
-  width: 100vw;
+  width: 90%;
   margin-top: 35px;
-  padding-left: 18px;
 }
 
 .user-quizzes {
@@ -580,7 +578,7 @@ main {
 
   /**Tela 1**/
   .create-quizz {
-    width: 1051px;
+    width: 75%;
     height: 181px;
   }
   .user-quizzes {
@@ -591,8 +589,19 @@ main {
   }
   .all-quizzes {
     margin-top: 12px;
+    width: 75%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
-  .server-name-quizzes {
+  .one-quizz {
+    width: 30%;
+  }
+  .one-quizz img {
+    width: 100%;
+  }
+  .servername-quizzes {
+    width: 75%;
     margin-top: 77px;
   }
 

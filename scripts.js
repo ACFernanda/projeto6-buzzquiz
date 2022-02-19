@@ -109,11 +109,11 @@ function renderOneQuestionContainer(quizzQuestion) {
   }
 
   allQuestionsContainer.innerHTML += `
-  <div class="question-container not-answered">
+  <div class="question-container not-answered" data-identifier="question">
     <div class="question-title-container">
       ${questionContainerInnerHTML}
     </div>
-    <div class="answers-container">
+    <div class="answers-container" data-identifier="answer">
       ${answerContainerInnerHTML}
     </div>
   </div>`;
