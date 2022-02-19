@@ -199,6 +199,12 @@ article p {
   color: #ffffff;
 }
 
+.all-questions-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .question-container {
   background-color: #ffffff;
   display: flex;
@@ -215,11 +221,12 @@ article p {
 .question-title {
   margin-top: 38px;
   background-color: #434ca0;
-  height: 89px;
+  min-height: 89px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 3%;
+  width: 100%;
 }
 
 .question-title p {
@@ -227,6 +234,7 @@ article p {
   font-size: 19px;
   font-weight: 700;
   text-align: center;
+  word-break: break-all;
 }
 
 .answers-container {
@@ -263,6 +271,7 @@ article p {
   font-size: 18px;
   font-weight: 700;
   color: #000000;
+  word-break: break-all;
 }
 
 .answer.false.color p {
@@ -286,7 +295,7 @@ article p {
   margin-top: 38px;
   background-color: #434ca0;
   width: 95%;
-  height: 89px;
+  min-height: 89px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,11 +303,18 @@ article p {
   color: #ffffff;
   font-weight: 700;
   font-size: 19px;
+  word-break: break-all;
+}
+
+.image-and-text-container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
 }
 
 .end-quizz-container img {
   margin-top: 9px;
-  width: 95%;
+  width: 100%;
 }
 
 .end-quizz-container p {
@@ -308,6 +324,7 @@ article p {
   text-align: left;
   width: 95%;
   margin-top: 9px;
+  word-break: break-word;
 }
 
 .end-quizz-buttons {
@@ -474,13 +491,12 @@ main {
 }
 
 .conclude-screen img {
-   border-radius: 5px;
+  border-radius: 5px;
   height: 100%;
   width: 340px;
   object-fit: cover;
   position: absolute;
   margin-top: 29px;
-
 }
 
 .img-teste {
@@ -593,7 +609,6 @@ main {
 
   .end-quizz-container {
     width: 60%;
-    display: block;
   }
   .end-quizz-container img {
     width: 50%;
@@ -601,7 +616,13 @@ main {
   }
 
   .end-quizz-container p {
-    display: inline;
+    margin-left: 10px;
+  }
+
+  .image-and-text-container {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
   }
 }
 

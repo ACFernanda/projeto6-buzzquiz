@@ -197,8 +197,10 @@ function renderEndQuizzContainer() {
     <div class="end-quizz-title">
       <span>${score}% de acerto: ${scoreLevelTitle}</span>
       </div>
-      <img src="${scoreLevelImage}" />
-      <p>${scoreLevelText}</p>`;
+      <div class ="image-and-text-container">
+        <img src="${scoreLevelImage}" />
+        <p>${scoreLevelText}</p>
+      </div>`;
 
     endQuizzContainer.classList.remove("hide");
   }
