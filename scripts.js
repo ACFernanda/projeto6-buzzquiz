@@ -57,13 +57,16 @@ function openQuizz(quizzDiv) {
   promise.catch(errorScreen);
 }
 
+let numberOfQuestions = 0;
+let scoreLevelsArray = [];
 function renderOneQuizz(selectedQuizz) {
   const infoQuizz = selectedQuizz.data;
-
+  const quizzQuestions = infoQuizz.questions;
+  numberOfQuestions = quizzQuestions.length;
   const quizzTitle = infoQuizz.title; // RETORNA STRING
   const quizzImg = infoQuizz.image; // RETORNA URL DA IMAGEM
-  const quizzQuestions = infoQuizz.questions; // RETORNA ARRAY
   const scoreLevels = infoQuizz.levels; // RETORNA ARRAY
+  scoreLevelsArray = scoreLevels;
 
   renderQuizzBanner(quizzTitle, quizzImg);
   quizzQuestions.forEach(renderOneQuestionContainer);
@@ -119,6 +122,7 @@ function sortArray() {
   return Math.random() - 0.5;
 }
 
+let rightAnswers = 0;
 function selectMyAnswer(selectedOption) {
   const questionAnswersOption = selectedOption.parentNode;
   const options = questionAnswersOption.querySelectorAll(".answer");
@@ -131,8 +135,21 @@ function selectMyAnswer(selectedOption) {
       options[i].classList.add("color");
     }
   }
+  if (selectedOption.classList.contains("true")) {
+    rightAnswers += 1;
+  }
+
   questionAnswersOption.parentNode.classList.remove("not-answered");
   setTimeout(scrollToNextQuestion, 2000);
+
+  const questionsUnanswered = document.querySelectorAll(
+    ".question-container.not-answered"
+  );
+
+  if (questionsUnanswered.length === 0) {
+    setTimeout(calcScore, 2000);
+    setTimeout(scrollToEndQuizz, 2000);
+  }
 }
 
 function scrollToNextQuestion() {
@@ -141,6 +158,47 @@ function scrollToNextQuestion() {
   );
   if (nextQuestion !== null) {
     nextQuestion.scrollIntoView();
+  }
+}
+
+function scrollToEndQuizz() {
+  const endQuizz = document.querySelector(".end-quizz-container");
+  if (endQuizz !== null) {
+    endQuizz.scrollIntoView();
+  }
+}
+
+let score = 0;
+let scoreLevelTitle;
+let scoreLevelImage;
+let scoreLevelText;
+
+function calcScore() {
+  score = Math.round((rightAnswers / numberOfQuestions) * 100);
+  for (let i = 0; i < scoreLevelsArray.length; i++) {
+    let scoreLevel;
+
+    if (score >= scoreLevelsArray[i].minValue) {
+      scoreLevel = scoreLevelsArray[i];
+      scoreLevelTitle = scoreLevel.title;
+      scoreLevelImage = scoreLevel.image;
+      scoreLevelText = scoreLevel.text;
+    }
+  }
+  renderEndQuizzContainer();
+}
+
+function renderEndQuizzContainer() {
+  const endQuizzContainer = document.querySelector(".end-quizz-container");
+  if (endQuizzContainer !== null) {
+    endQuizzContainer.innerHTML = `
+    <div class="end-quizz-title">
+      <span>${score}% de acerto: ${scoreLevelTitle}</span>
+      </div>
+      <img src="${scoreLevelImage}" />
+      <p>${scoreLevelText}</p>`;
+
+    endQuizzContainer.classList.remove("hide");
   }
 }
 
