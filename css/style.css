@@ -621,7 +621,6 @@ main {
   }
   .end-quizz-container img {
     width: 50%;
-    margin-left: 25px;
   }
 
   .end-quizz-container p {
@@ -629,7 +628,7 @@ main {
   }
 
   .image-and-text-container {
-    width: 100%;
+    width: 95%;
     flex-direction: row;
     justify-content: flex-start;
   }
