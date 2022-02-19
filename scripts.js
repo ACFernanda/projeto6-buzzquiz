@@ -295,6 +295,7 @@ function endCreation() {
   document.querySelector(".conclude-screen").classList.remove("hide");
 }
 
+//retorna pra home - tela 2 listando os quizzes do usuário
 function returnHome() {
   document.querySelector(".conclude-screen").classList.add("hide");
   document.querySelector(".home-screen").classList.remove("hide");
