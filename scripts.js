@@ -277,53 +277,35 @@ function questionsNumberIsValid() {
     for (let i = 0; i < questionsNumber - 3; i++) {
       let main = document.querySelector(".quizz-questions main");
       main.innerHTML += `
-      <div onclick="appearQuestionsInputs(this)" class="questions">
-        <h3>Pergunta ${i + 4}</h3>
-        <ion-icon name="create-outline"></ion-icon>
-      </div>
+      <div>
+        <div onclick="appearQuestionsInputs(this)" class="questions">
+          <h3>Pergunta ${i + 4}</h3>
+          <ion-icon name="create-outline"></ion-icon>
+        </div>
 
-      <div class="questions-input hide">
+        <div class="questions-input hide">
           <ul>
             <li>
-              <input
-                class="question-text"
-                type="text"
-                placeholder="Texto da pergunta"
-              />
+              <input class="question-text" type="text" placeholder="Texto da pergunta"/>
             </li>
             <li>
-              <input
-                onclick="textIsValid()"
-                class="question-color"
-                type="text"
-                placeholder="Cor de fundo da pergunta"
-              />
+              <input onclick="textIsValid()" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
             </li>
           </ul>
-  
+    
           <h3>Resposta correta</h3>
-  
+    
           <ul>
             <li>
-              <input
-                onclick="colorIsValid()"
-                class="right-answer"
-                type="text"
-                placeholder="Resposta correta"
-              />
+              <input onclick="colorIsValid()" class="right-answer" type="text" placeholder="Resposta correta"/>
             </li>
             <li>
-              <input
-                onclick="rightAnswerIsValid()"
-                class="right-img-url"
-                type="text"
-                placeholder="URL da imagem"
-              />
+              <input onclick="rightAnswerIsValid()" class="right-img-url" type="text" placeholder="URL da imagem"/>
             </li>
           </ul>
-  
+    
           <h3>Respostas incorretas</h3>
-  
+    
           <ul>
             <li>
               <input
@@ -342,7 +324,7 @@ function questionsNumberIsValid() {
               />
             </li>
           </ul>
-  
+    
           <ul>
             <li>
               <input
@@ -359,7 +341,7 @@ function questionsNumberIsValid() {
               />
             </li>
           </ul>
-  
+    
           <ul>
             <li>
               <input
@@ -377,14 +359,14 @@ function questionsNumberIsValid() {
             </li>
           </ul>
         </div>
+      </div>
       `;
     }
   }
 }
 
 function appearQuestionsInputs(div) {
-  let questionsInput = div.closest(".questions-input");
-  console.log(questionsInput)
+  let questionsInput = div.parentNode.children[1];
   questionsInput.classList.remove("hide");
 }
 
@@ -514,17 +496,58 @@ function goToPageCreateLevels() {
   for (let i = 0; i < levelsNumber - 2; i++) {
     let main = document.querySelector(".quizz-levels main");
     main.innerHTML += `
-    <div class="questions">
-      <h3>Nível ${i + 3}</h3>
-      <ion-icon name="create-outline"></ion-icon>
-    </div>
+    <div>
+          <div onclick="appearLevelsInputs(this)" class="questions">
+            <h3>Nível ${i+3}</h3>
+            <ion-icon name="create-outline"></ion-icon>
+          </div>
+
+          <div class="hide">
+            <ul>
+              <li>
+                <input
+                  class="level-title"
+                  type="text"
+                  placeholder="Título do nível"
+                />
+              </li>
+              <li>
+                <input
+                  onclick="levelTitleIsValid()"
+                  class="hit-percentage"
+                  type="text"
+                  placeholder="% de acerto mínima"
+                />
+              </li>
+              <li>
+                <input
+                  onclick="hitPercentageIsValid()"
+                  class="level-img-url"
+                  type="text"
+                  placeholder="URL da imagem do nível"
+                />
+              </li>
+              <li>
+                <textarea
+                  onclick="levelUrlIsValid()"
+                  class="level-description"
+                  placeholder="Descrição do nível"
+                ></textarea>
+              </li>
+            </ul>
+          </div>
+        </div>
     `
   }
   document.querySelector(".quizz-questions").classList.add("hide");
   document.querySelector(".quizz-levels").classList.remove("hide");
 }
 
-/*falta validar as respostas incorretas não obrigatórias*/
+function appearLevelsInputs(div) {
+  let levelsInput = div.parentNode.children[1];
+  console.log(levelsInput)
+  levelsInput.classList.remove("hide");
+}
 
 /* tela de níveis */
 
