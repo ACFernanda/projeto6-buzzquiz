@@ -22,20 +22,31 @@
       <section class="list-quizzes">
         <article class="create-quizz">
           <p>Você não criou nenhum quizz ainda :(</p>
-          <button class="btn-createquizz" onclick="createQuizz()">
+          <button
+            data-identifier="create-quizz"
+            class="btn-createquizz"
+            onclick="createQuizz()"
+          >
             Criar Quizz
           </button>
         </article>
       </section>
-      <section class="userquizzes">
-        <article class="user-quizzes hide">
+      <section class="userquizzes hide">
+        <article class="user-quizzes">
           <h1 class="user-name-quizzes">Seus Quizzes</h1>
-          <button class="icon-createquizz" onclick="createQuizz()"></button>
+          <button
+            data-identifier="create-quizz"
+            class="icon-createquizz"
+            onclick="createQuizz()"
+          ></button>
         </article>
       </section>
-      <section class="teste">
+      <section class="all-server-quizzes">
         <h1 class="servername-quizzes">Todos os Quizzes</h1>
-        <article class="all-quizzes"></article>
+        <article
+          data-identifier="general-quizzes"
+          class="all-quizzes"
+        ></article>
       </section>
     </div>
     <!---- HTML TELA 2  ------>
@@ -268,14 +279,15 @@
 
     <section class="conclude-screen hide">
       <h1>Seu quiz está pronto!</h1>
-      <div class="gradient"></div>
-      <img src="./img/teste.jpeg" class="img-test" />
-      <button class="acess-button" onclick="newQuizzAcess()">
-        Acessar Quiz
-      </button>
-      <button class="return-button" onclick="returnHome()">
-        Voltar pra Home
-      </button>
+      <div class="new-quizz">
+        AQUI VAI ENTRAR O HTML CRIADO NA FUNÇÃO RENDERNEWQUIZZ
+      </div>
+      <div class="end-page-buttons">
+        <button onclick="restartQuizz()" class="restart">Acessar Quizz</button>
+        <button onclick="returnHomeReloaded()" class="back-home">
+          Voltar pra home
+        </button>
+      </div>
     </section>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
