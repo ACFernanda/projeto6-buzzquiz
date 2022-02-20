@@ -243,13 +243,13 @@ function returnToHomePage() {
 let test = 0;
 let questionsNumber = 0;
 let levelsNumber = 0;
-let titleValue = document.querySelector(".quizz-title").value;
-let url = document.querySelector(".quizz-img-url").value;
+let title = document.querySelector(".quizz-title");
+let url = document.querySelector(".quizz-img-url");
 
 /* tela informações básicas */
 
 function titleIsValid() {
-  if (titleValue.length < 20 || titleValue.length > 65) {
+  if (title.value.length < 20 || title.value.length > 65) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
     document.querySelector(".quizz-img-url").disabled = true;
   }
@@ -258,8 +258,10 @@ function titleIsValid() {
 
 function urlIsValid() {
   if (
-    url.startsWith("http") &&
-    (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
+    url.value.startsWith("http") &&
+    (url.value.endsWith(".jpg") ||
+      url.value.endsWith(".jpeg") ||
+      url.value.endsWith(".png"))
   ) {
   } else {
     alert("Preencha a URL corretamente!");
@@ -322,8 +324,8 @@ function goToPageCreateQuestions() {
 /* tela de perguntas */
 
 function textIsValid() {
-  let textValue = document.querySelector(".question-text").value;
-  if (textValue.length < 20) {
+  let title = document.querySelector(".question-text").value;
+  if (title.length < 20) {
     alert("O título precisa ter, no mínimo 20 caracteres!");
     document.querySelector(".question-color").disabled = true;
   }

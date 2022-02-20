@@ -102,6 +102,10 @@ article p {
   margin-top: 14px;
 }
 
+.one-quizz h1 {
+  word-break: break-word;
+}
+
 .one-quizz::after {
   position: absolute;
   border-radius: 5px;
@@ -553,6 +557,10 @@ main {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+  }
+
+  .screen3 textarea {
+    width: 54.2vw;
   }
 
   .conclude-screen h1 {
