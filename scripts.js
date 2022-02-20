@@ -249,7 +249,7 @@ let url = document.querySelector(".quizz-img-url");
 /* tela informações básicas */
 
 function titleIsValid() {
-  if (title.value.length < 20 || title.value.length > 65) {
+  if ((title.value.length < 20) || (title.value.length > 65)) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
     document.querySelector(".quizz-img-url").disabled = true;
   }
@@ -257,12 +257,7 @@ function titleIsValid() {
 }
 
 function urlIsValid() {
-  if (
-    url.value.startsWith("http") &&
-    (url.value.endsWith(".jpg") ||
-      url.value.endsWith(".jpeg") ||
-      url.value.endsWith(".png"))
-  ) {
+  if (url.value.startsWith("http") && ((url.value.endsWith(".jpg")) || (url.value.endsWith(".jpeg")) || (url.value.endsWith(".png")))) {
   } else {
     alert("Preencha a URL corretamente!");
     document.querySelector(".questions-number").disabled = true;
@@ -273,7 +268,7 @@ function urlIsValid() {
 function questionsNumberIsValid() {
   questionsNumber = document.querySelector(".questions-number").value;
   questionsNumber = parseInt(questionsNumber);
-  if (questionsNumber < 3 || isNaN(questionsNumber) === true) {
+  if ((questionsNumber < 3) || (isNaN(questionsNumber) === true)) {
     alert("Use números a partir de 3");
     document.querySelector(".levels-number").disabled = true;
   }
@@ -282,13 +277,115 @@ function questionsNumberIsValid() {
     for (let i = 0; i < questionsNumber - 3; i++) {
       let main = document.querySelector(".quizz-questions main");
       main.innerHTML += `
-      <div class="questions">
+      <div onclick="appearQuestionsInputs(this)" class="questions">
         <h3>Pergunta ${i + 4}</h3>
         <ion-icon name="create-outline"></ion-icon>
       </div>
+
+      <div class="questions-input hide">
+          <ul>
+            <li>
+              <input
+                class="question-text"
+                type="text"
+                placeholder="Texto da pergunta"
+              />
+            </li>
+            <li>
+              <input
+                onclick="textIsValid()"
+                class="question-color"
+                type="text"
+                placeholder="Cor de fundo da pergunta"
+              />
+            </li>
+          </ul>
+  
+          <h3>Resposta correta</h3>
+  
+          <ul>
+            <li>
+              <input
+                onclick="colorIsValid()"
+                class="right-answer"
+                type="text"
+                placeholder="Resposta correta"
+              />
+            </li>
+            <li>
+              <input
+                onclick="rightAnswerIsValid()"
+                class="right-img-url"
+                type="text"
+                placeholder="URL da imagem"
+              />
+            </li>
+          </ul>
+  
+          <h3>Respostas incorretas</h3>
+  
+          <ul>
+            <li>
+              <input
+                onclick="rightAnswerUrlIsValid()"
+                class="wrong-answer1"
+                type="text"
+                placeholder="Resposta incorreta 1"
+              />
+            </li>
+            <li>
+              <input
+                onclick="wrongAnswerIsValid()"
+                class="wrong-img-url1"
+                type="text"
+                placeholder="URL da imagem 1"
+              />
+            </li>
+          </ul>
+  
+          <ul>
+            <li>
+              <input
+                class="wrong-answer2"
+                type="text"
+                placeholder="Resposta incorreta 2"
+              />
+            </li>
+            <li>
+              <input
+                class="wrong-img-url2"
+                type="text"
+                placeholder="URL da imagem 2"
+              />
+            </li>
+          </ul>
+  
+          <ul>
+            <li>
+              <input
+                class="wrong-answer3"
+                type="text"
+                placeholder="Resposta incorreta 3"
+              />
+            </li>
+            <li>
+              <input
+                class="wrong-img-url3"
+                type="text"
+                placeholder="URL da imagem 3"
+              />
+            </li>
+          </ul>
+        </div>
       `;
     }
   }
+}
+
+function appearQuestionsInputs(div) {
+  let questionsInput = div.closest(".questions-input");
+  console.log(questionsInput)
+  questionsInput.classList.remove("hide");
 }
 
 function levelsNumberIsValid() {
@@ -296,18 +393,7 @@ function levelsNumberIsValid() {
   levelsNumber = parseInt(levelsNumber);
   if (levelsNumber < 2 || isNaN(levelsNumber) === true) {
     alert("Você precisa de, no mínimo, 2 níveis!");
-  } else if ((levelsNumber = 2)) {
-    goToPageCreateQuestions();
-  } else if (levelsNumber > 2) {
-    for (let i = 0; i < levelsNumber - 2; i++) {
-      let main = document.querySelector(".quizz-levels main");
-      main.innerHTML += `
-      <div class="questions">
-        <h3>Nível ${i + 3}</h3>
-        <ion-icon name="create-outline"></ion-icon>
-      </div>
-      `;
-    }
+  } else if ((levelsNumber >= 2)) {
     goToPageCreateQuestions();
   }
 }
@@ -425,6 +511,15 @@ function createLevels() {
 }
 
 function goToPageCreateLevels() {
+  for (let i = 0; i < levelsNumber - 2; i++) {
+    let main = document.querySelector(".quizz-levels main");
+    main.innerHTML += `
+    <div class="questions">
+      <h3>Nível ${i + 3}</h3>
+      <ion-icon name="create-outline"></ion-icon>
+    </div>
+    `
+  }
   document.querySelector(".quizz-questions").classList.add("hide");
   document.querySelector(".quizz-levels").classList.remove("hide");
 }
@@ -452,7 +547,7 @@ function hitPercentageIsValid() {
   document.querySelector(".level-img-url").disabled = false;
 }
 
-function LevelUrlIsValid() {
+function levelUrlIsValid() {
   let levelUrl = document.querySelector(".level-img-url").value;
   if (
     levelUrl.startsWith("http") &&
