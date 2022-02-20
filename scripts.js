@@ -14,7 +14,7 @@ function renderQuizzOnScreen(response) {
 
   for (let i = 0; i < renderQuizz.length; i++) {
     render.innerHTML += `
-      <div onclick="openQuizz(this)" class="one-quizz">
+      <div onclick="openQuizz(this)" class="one-quizz" data-identifier="quizz-card">
         <img src="${renderQuizz[i].image}" class="img-quizzes" id="${renderQuizz[i].id}" /> 
         <h1 class="name-quizzes">${renderQuizz[i].title}</h1>
       </div>`;
@@ -29,9 +29,7 @@ function errorScreen(error) {
 
 function createQuizz() {
   document.querySelector(".quizz-basic-information").classList.remove("hide");
-  document.querySelector(".list-quizzes").classList.add("hide");
-  document.querySelector(".all-quizzes").classList.add("hide");
-  document.querySelector(".user-quizzes").classList.add("hide");
+  document.querySelector(".home-screen").classList.add("hide");
 }
 
 //* Tela 2*//
@@ -42,10 +40,12 @@ function openQuizz(quizzDiv) {
 
   const homePage = document.querySelector(".home-screen");
   const playQuizzPage = document.querySelector(".playquizz-page.hide");
+  const concludeScreen = document.querySelector(".conclude-screen");
 
-  if (homePage !== null) {
+  if (homePage !== null || playQuizzPage !== null || concludeScreen !== null) {
     playQuizzPage.classList.remove("hide");
     homePage.classList.add("hide");
+    concludeScreen.classList.add("hide");
   }
 
   document.body.scrollTop = 0; // For Safari
@@ -194,7 +194,7 @@ const endQuizzContainer = document.querySelector(".end-quizz-container");
 function renderEndQuizzContainer() {
   if (endQuizzContainer !== null) {
     endQuizzContainer.innerHTML = `
-    <div class="end-quizz-title">
+    <div class="end-quizz-title" data-identifier="quizz-result">
       <span>${score}% de acerto: ${scoreLevelTitle}</span>
       </div>
       <div class ="image-and-text-container">
@@ -243,11 +243,12 @@ function returnToHomePage() {
 let test = 0;
 let questionsNumber = 0;
 let levelsNumber = 0;
+let titleValue = document.querySelector(".quizz-title").value;
+let url = document.querySelector(".quizz-img-url").value;
 
 /* tela informações básicas */
 
 function titleIsValid() {
-  let titleValue = document.querySelector(".quizz-title").value;
   if (titleValue.length < 20 || titleValue.length > 65) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
     document.querySelector(".quizz-img-url").disabled = true;
@@ -256,7 +257,6 @@ function titleIsValid() {
 }
 
 function urlIsValid() {
-  let url = document.querySelector(".quizz-img-url").value;
   if (
     url.startsWith("http") &&
     (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
@@ -481,12 +481,29 @@ function concludeCreation() {
 function goToPageConcludeCreation() {
   document.querySelector(".quizz-levels").classList.add("hide");
   document.querySelector(".conclude-screen").classList.remove("hide");
+  renderNewQuizz();
+}
+
+function renderNewQuizz() {
+  let newQuizzHTML = document.querySelector(".conclude-screen .new-quizz");
+  newQuizzHTML.innerHTML = `
+  <div class="one-quizz" data-identifier="quizz-card">
+    <img src="${url}" class="img-quizzes"  /> 
+    <h1 class="name-quizzes">${titleValue}</h1>
+  </div>`; /* PRECISA TER O ID DO QUIZZ QUE SERÁ CRIANDO QUANDO DER O POST: id="NÚMERO" */
 }
 
 //retorna pra home - tela 2 listando os quizzes do usuário
-function returnHome() {
-  document.querySelector(".conclude-screen").classList.add("hide");
-  document.querySelector(".home-screen").classList.remove("hide");
-  document.querySelector(".create-quizz").classList.add("hide");
-  document.querySelector(".user-quizzes").classList.remove("hide");
+function returnHomeReloaded() {
+  const reload = window.location.reload();
+  reload.then(showUserQuizzes);
+}
+
+function showUserQuizzes() {
+  const newQuizzBox = document.querySelector(".list-quizzes");
+  const userQuizzesLayout = document.querySelector(".userquizzes.hide");
+  if (newQuizzBox !== null || userQuizzesLayout !== null) {
+    newQuizzBox.classList.add("hide");
+    userQuizzesLayout.classList.remove("hide");
+  }
 }
