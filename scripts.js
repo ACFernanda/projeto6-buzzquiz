@@ -678,7 +678,7 @@ function goToPageConcludeCreation() {
 function renderNewQuizz() {
   let newQuizzHTML = document.querySelector(".conclude-screen .new-quizz");
   newQuizzHTML.innerHTML = `
-  <div class="one-quizz" data-identifier="quizz-card">
+  <div class="one-quizz" data-identifier="quizz-card" data-identifier="user-quizzes">
     <img src="${url}" class="img-quizzes"  /> 
     <h1 class="name-quizzes">${title}</h1>
   </div>`; /* PRECISA TER O ID DO QUIZZ QUE SERÁ CRIANDO QUANDO DER O POST: id="NÚMERO" */
@@ -692,16 +692,21 @@ sendQuizz.catch();
 
 //retorna pra home - tela 2 listando os quizzes do usuário
 function returnHomeReloaded() {
-  const reload = window.location.reload();
-  reload.then(showUserQuizzes);
+  window.location.reload();
+  showUserQuizzes();
 }
 
+
+// a testar se funciona após o user criar um quizz
 function showUserQuizzes() {
-  const newQuizzBox = document.querySelector(".list-quizzes");
-  const userQuizzesLayout = document.querySelector(".userquizzes.hide");
-  if (newQuizzBox !== null || userQuizzesLayout !== null) {
-    newQuizzBox.classList.add("hide");
-    userQuizzesLayout.classList.remove("hide");
+  const createQuizz = document.querySelector(".list-quizzes");
+  const createQuizzSmall = document.querySelector(".userquizzes");
+  if (userQuizz === null) {
+    createQuizzSmall.classList.add("hide");
+    createQuizz.classList.remove("hide");
+  } else {
+    createQuizz.classList.add("hide");
+    createQuizzSmall.classList.remove("hide");
   }
 }
 
