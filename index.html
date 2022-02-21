@@ -106,14 +106,14 @@
 
         <div>
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 class="question-text"
                 type="text"
                 placeholder="Texto da pergunta"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="textIsValid(this)"
                 class="question-color"
@@ -124,7 +124,7 @@
           </ul>
           <h3>Resposta correta</h3>
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="colorIsValid(this)"
                 class="right-answer"
@@ -132,7 +132,7 @@
                 placeholder="Resposta correta"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="rightAnswerIsValid(this)"
                 class="right-img-url"
@@ -143,7 +143,7 @@
           </ul>
           <h3>Respostas incorretas</h3>
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="rightAnswerUrlIsValid(this)"
                 class="wrong-answer1"
@@ -151,7 +151,7 @@
                 placeholder="Resposta incorreta 1"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="wrongAnswerIsValid(this)"
                 class="wrong-img-url1"
@@ -161,14 +161,14 @@
             </li>
           </ul>
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-answer2"
                 type="text"
                 placeholder="Resposta incorreta 2"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-img-url2"
                 type="text"
@@ -177,14 +177,14 @@
             </li>
           </ul>
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-answer3"
                 type="text"
                 placeholder="Resposta incorreta 3"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-img-url3"
                 type="text"
@@ -195,26 +195,26 @@
         </div>
 
         <div>
-          <div onclick="appearQuestionsInputs(this)" class="questions">
+          <div data-identifier="expand" onclick="appearQuestionsInputs(this)" class="questions">
             <h3>Pergunta 2</h3>
             <ion-icon name="create-outline"></ion-icon>
           </div>
           <div class="questions-input hide">
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="question-text"
                   type="text"
                   placeholder="Texto da pergunta"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input onclick="textIsValid(this)" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
               </li>
             </ul>
             <h3>Resposta correta</h3>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="colorIsValid(this)"
                   class="right-answer"
@@ -222,7 +222,7 @@
                   placeholder="Resposta correta"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="rightAnswerIsValid(this)"
                   class="right-img-url"
@@ -233,7 +233,7 @@
             </ul>
             <h3>Respostas incorretas</h3>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="rightAnswerUrlIsValid(this)"
                   class="wrong-answer1"
@@ -241,7 +241,7 @@
                   placeholder="Resposta incorreta 1"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="wrongAnswerIsValid(this)"
                   class="wrong-img-url1"
@@ -251,14 +251,14 @@
               </li>
             </ul>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-answer2"
                   type="text"
                   placeholder="Resposta incorreta 2"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-img-url2"
                   type="text"
@@ -267,14 +267,14 @@
               </li>
             </ul>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-answer3"
                   type="text"
                   placeholder="Resposta incorreta 3"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-img-url3"
                   type="text"
@@ -286,20 +286,20 @@
         </div>
 
         <div>
-          <div onclick="appearQuestionsInputs(this)" class="questions">
+          <div data-identifier="expand" onclick="appearQuestionsInputs(this)" class="questions">
             <h3>Pergunta 3</h3>
             <ion-icon name="create-outline"></ion-icon>
           </div>
           <div class="questions-input hide">
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="question-text"
                   type="text"
                   placeholder="Texto da pergunta"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="textIsValid(this)"
                   class="question-color"
@@ -310,7 +310,7 @@
             </ul>
             <h3>Resposta correta</h3>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="colorIsValid(this)"
                   class="right-answer"
@@ -318,7 +318,7 @@
                   placeholder="Resposta correta"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="rightAnswerIsValid(this)"
                   class="right-img-url"
@@ -329,7 +329,7 @@
             </ul>
             <h3>Respostas incorretas</h3>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="rightAnswerUrlIsValid(this)"
                   class="wrong-answer1"
@@ -337,7 +337,7 @@
                   placeholder="Resposta incorreta 1"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   onclick="wrongAnswerIsValid(this)"
                   class="wrong-img-url1"
@@ -347,14 +347,14 @@
               </li>
             </ul>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-answer2"
                   type="text"
                   placeholder="Resposta incorreta 2"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-img-url2"
                   type="text"
@@ -363,14 +363,14 @@
               </li>
             </ul>
             <ul>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-answer3"
                   type="text"
                   placeholder="Resposta incorreta 3"
                 />
               </li>
-              <li>
+              <li data-identifier="question">
                 <input
                   class="wrong-img-url3"
                   type="text"
@@ -393,14 +393,14 @@
 
         <div>
           <ul>
-            <li>
+            <li data-identifier="level">
               <input
                 class="level-title"
                 type="text"
                 placeholder="Título do nível"
               />
             </li>
-            <li>
+            <li data-identifier="level">
               <input
                 onclick="levelTitleIsValid(this)"
                 class="hit-percentage"
@@ -408,7 +408,7 @@
                 placeholder="% de acerto mínima"
               />
             </li>
-            <li>
+            <li data-identifier="level">
               <input
                 onclick="hitPercentageIsValid(this)"
                 class="level-img-url"
@@ -416,7 +416,7 @@
                 placeholder="URL da imagem do nível"
               />
             </li>
-            <li>
+            <li data-identifier="level">
               <textarea
                 onclick="levelUrlIsValid(this)"
                 class="level-description"
@@ -427,21 +427,21 @@
         </div>
 
         <div>
-          <div onclick="appearLevelsInputs(this)" class="questions">
+          <div data-identifier="expand" onclick="appearLevelsInputs(this)" class="questions">
             <h3>Nível 2</h3>
             <ion-icon name="create-outline"></ion-icon>
           </div>
 
           <div class="hide">
             <ul>
-              <li>
+              <li data-identifier="level">
                 <input
                   class="level-title"
                   type="text"
                   placeholder="Título do nível"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <input
                   onclick="levelTitleIsValid(this)"
                   class="hit-percentage"
@@ -449,7 +449,7 @@
                   placeholder="% de acerto mínima"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <input
                   onclick="hitPercentageIsValid(this)"
                   class="level-img-url"
@@ -457,7 +457,7 @@
                   placeholder="URL da imagem do nível"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <textarea
                   onclick="levelUrlIsValid(this)"
                   class="level-description"

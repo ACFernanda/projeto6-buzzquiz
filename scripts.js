@@ -286,17 +286,17 @@ function questionsNumberIsValid() {
       let main = document.querySelector(".quizz-questions main");
       main.innerHTML += `
       <div>
-        <div onclick="appearQuestionsInputs(this)" class="questions">
+        <div data-identifier="expand" onclick="appearQuestionsInputs(this)" class="questions">
           <h3>Pergunta ${i + 4}</h3>
           <ion-icon name="create-outline"></ion-icon>
         </div>
 
         <div class="questions-input hide">
           <ul>
-            <li>
+            <li data-identifier="question">
               <input class="question-text" type="text" placeholder="Texto da pergunta"/>
             </li>
-            <li>
+            <li data-identifier="question">
               <input onclick="textIsValid(this)" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
             </li>
           </ul>
@@ -304,10 +304,10 @@ function questionsNumberIsValid() {
           <h3>Resposta correta</h3>
     
           <ul>
-            <li>
+            <li data-identifier="question">
               <input onclick="colorIsValid()" class="right-answer" type="text" placeholder="Resposta correta"/>
             </li>
-            <li>
+            <li data-identifier="question">
               <input onclick="rightAnswerIsValid()" class="right-img-url" type="text" placeholder="URL da imagem"/>
             </li>
           </ul>
@@ -315,7 +315,7 @@ function questionsNumberIsValid() {
           <h3>Respostas incorretas</h3>
     
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="rightAnswerUrlIsValid()"
                 class="wrong-answer1"
@@ -323,7 +323,7 @@ function questionsNumberIsValid() {
                 placeholder="Resposta incorreta 1"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 onclick="wrongAnswerIsValid()"
                 class="wrong-img-url1"
@@ -334,14 +334,14 @@ function questionsNumberIsValid() {
           </ul>
     
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-answer2"
                 type="text"
                 placeholder="Resposta incorreta 2"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-img-url2"
                 type="text"
@@ -351,14 +351,14 @@ function questionsNumberIsValid() {
           </ul>
     
           <ul>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-answer3"
                 type="text"
                 placeholder="Resposta incorreta 3"
               />
             </li>
-            <li>
+            <li data-identifier="question">
               <input
                 class="wrong-img-url3"
                 type="text"
@@ -507,21 +507,21 @@ function goToPageCreateLevels() {
     let main = document.querySelector(".quizz-levels main");
     main.innerHTML += `
     <div>
-          <div onclick="appearLevelsInputs(this)" class="questions">
+          <div data-identifier="expand" onclick="appearLevelsInputs(this)" class="questions">
             <h3>Nível ${i+3}</h3>
             <ion-icon name="create-outline"></ion-icon>
           </div>
 
           <div class="hide">
             <ul>
-              <li>
+              <li data-identifier="level">
                 <input
                   class="level-title"
                   type="text"
                   placeholder="Título do nível"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <input
                   onclick="levelTitleIsValid()"
                   class="hit-percentage"
@@ -529,7 +529,7 @@ function goToPageCreateLevels() {
                   placeholder="% de acerto mínima"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <input
                   onclick="hitPercentageIsValid()"
                   class="level-img-url"
@@ -537,7 +537,7 @@ function goToPageCreateLevels() {
                   placeholder="URL da imagem do nível"
                 />
               </li>
-              <li>
+              <li data-identifier="level">
                 <textarea
                   onclick="levelUrlIsValid()"
                   class="level-description"
