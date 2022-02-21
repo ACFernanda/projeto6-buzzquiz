@@ -244,13 +244,19 @@ let test = 0;
 let questionsNumber = 0;
 let levelsNumber = 0;
 let colorValue = "";
-let title = document.querySelector(".quizz-title");
-let url = document.querySelector(".quizz-img-url");
+let title = "";
+let url = "";
+let sentObject = "";
+let questionsArray = [];
+let levelsArray = [];
+sentObject.title = title;
+sentObject.image = url;
 
 /* tela informações básicas */
 
 function titleIsValid() {
-  if ((title.value.length < 20) || (title.value.length > 65)) {
+  title = document.querySelector(".quizz-title").value;
+  if ((title.length < 20) || (title.length > 65)) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
     document.querySelector(".quizz-img-url").disabled = true;
   }
@@ -258,7 +264,8 @@ function titleIsValid() {
 }
 
 function urlIsValid() {
-  if (url.value.startsWith("http") && ((url.value.endsWith(".jpg")) || (url.value.endsWith(".jpeg")) || (url.value.endsWith(".png")))) {
+  url = document.querySelector(".quizz-img-url").value;
+  if (url.startsWith("http") && ((url.endsWith(".jpg")) || (url.endsWith(".jpeg")) || (url.endsWith(".png")))) {
   } else {
     alert("Preencha a URL corretamente!");
     document.querySelector(".questions-number").disabled = true;
@@ -392,6 +399,22 @@ function goToPageCreateQuestions() {
 
 /* tela de perguntas */
 
+let textQuestionArray = [];
+let colorQuestionArray = [];
+let rightAnswerQuestionArray = [];
+let rightAnswerUrlQuestionArray = [];
+
+function createSentObject(){
+  for(let i = 0; i < questionsNumber; i++){
+    sentObject.questions[i].title = textQuestionArray[i];
+    sentObject.questions[i].color = colorQuestionArray[i];
+    sentObject.questions[i].answers[i].text = rightAnswerQuestionArray[i];
+    sentObject.questions[i].answers[i].image = rightAnswerUrlQuestionArray[i];
+    sentObject.questions[i].answers[i].isCorrectAnswer = true;
+  }
+  console.log(sentObject)
+}
+
 function textIsValid(textReceived) {
   let inputParent = textReceived.parentNode.parentNode.parentNode;
   let title = inputParent.querySelector(".question-text").value;
@@ -400,6 +423,7 @@ function textIsValid(textReceived) {
     inputParent.querySelector(".question-color").disabled = true;
   }
   inputParent.querySelector(".question-color").disabled = false;
+  textQuestionArray.push(title);
 }
 
 function colorIsValid(colorReceived) {
@@ -412,6 +436,7 @@ function colorIsValid(colorReceived) {
     inputParent.querySelector(".right-answer").disabled = true;
   }
   inputParent.querySelector(".right-answer").disabled = false;
+  colorQuestionArray.push(colorValue);
 }
 
 function colorCharactersIsValid() {
@@ -434,6 +459,7 @@ function rightAnswerIsValid(rightAnswerReceived) {
     inputParent.querySelector(".right-img-url").disabled = true;
   }
   inputParent.querySelector(".right-img-url").disabled = false;
+  rightAnswerQuestionArray.push(rightAnswerValue);
 }
 
 function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
@@ -445,6 +471,7 @@ function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
     inputParent.querySelector(".wrong-answer1").disabled = true;
   }
   inputParent.querySelector(".wrong-answer1").disabled = false;
+  rightAnswerUrlQuestionArray.push(rightAnswerUrlValue);
 }
 
 function wrongAnswerIsValid(wrongAnswerReceived) {
@@ -468,6 +495,8 @@ function wrongAnswerUrlIsValid(wrongAnswerUrlReceived) {
 } 
 /* NÃO ESTOU CONSEGUINDO PENSAR EM COMO FAZER ESSA VALIDAÇÃO 
 PQ ERA CLICANDO NO BOTÃO, MAS TEM MAIS DE UMA PRA AVALIAR */
+
+createSentObject();
 
 function createLevels() {
   wrongAnswerUrlIsValid(); /* ASSIM NÃO VAI DAR CERTO */
@@ -599,7 +628,9 @@ function renderNewQuizz() {
 
 /* POST */
 
-
+const sendQuizz = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", sentObject)
+sendQuizz.then();
+sendQuizz.catch();
 
 //retorna pra home - tela 2 listando os quizzes do usuário
 function returnHomeReloaded() {
