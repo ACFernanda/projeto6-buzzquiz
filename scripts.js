@@ -675,7 +675,7 @@ function goToPageConcludeCreation() {
 function renderNewQuizz() {
   let newQuizzHTML = document.querySelector(".conclude-screen .new-quizz");
   newQuizzHTML.innerHTML = `
-  <div class="one-quizz" data-identifier="quizz-card">
+  <div class="one-quizz" data-identifier="quizz-card" data-identifier="user-quizzes">
     <img src="${url}" class="img-quizzes"  /> 
     <h1 class="name-quizzes">${title}</h1>
   </div>`; /* PRECISA TER O ID DO QUIZZ QUE SERÁ CRIANDO QUANDO DER O POST: id="NÚMERO" */
