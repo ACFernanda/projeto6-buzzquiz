@@ -243,6 +243,7 @@ function returnToHomePage() {
 let test = 0;
 let questionsNumber = 0;
 let levelsNumber = 0;
+let colorValue = "";
 let title = document.querySelector(".quizz-title");
 let url = document.querySelector(".quizz-img-url");
 
@@ -289,7 +290,7 @@ function questionsNumberIsValid() {
               <input class="question-text" type="text" placeholder="Texto da pergunta"/>
             </li>
             <li>
-              <input onclick="textIsValid()" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
+              <input onclick="textIsValid(this)" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
             </li>
           </ul>
     
@@ -391,46 +392,30 @@ function goToPageCreateQuestions() {
 
 /* tela de perguntas */
 
-function textIsValid() {
-  let title = document.querySelector(".question-text").value;
+function textIsValid(textReceived) {
+  let inputParent = textReceived.parentNode.parentNode.parentNode;
+  let title = inputParent.querySelector(".question-text").value;
   if (title.length < 20) {
-    alert("O título precisa ter, no mínimo 20 caracteres!");
-    document.querySelector(".question-color").disabled = true;
+    alert("O texto precisa ter, no mínimo 20 caracteres!");
+    inputParent.querySelector(".question-color").disabled = true;
   }
-  document.querySelector(".question-color").disabled = false;
+  inputParent.querySelector(".question-color").disabled = false;
 }
 
-function colorIsValid() {
+function colorIsValid(colorReceived) {
   colorCharactersIsValid();
-  let colorValue = document.querySelector(".question-color").value;
+  let inputParent = colorReceived.parentNode.parentNode.parentNode;
+  colorValue = inputParent.querySelector(".question-color").value;
   if (colorValue.length !== 7 || !colorValue.startsWith("#") || test !== 6) {
     alert("A cor precisa ser colocada em modelo hexadecimal!");
     test = 0;
-    document.querySelector(".right-answer").disabled = true;
+    inputParent.querySelector(".right-answer").disabled = true;
   }
-  document.querySelector(".right-answer").disabled = false;
+  inputParent.querySelector(".right-answer").disabled = false;
 }
 
 function colorCharactersIsValid() {
-  let colorValue = document.querySelector(".question-color").value;
-  let validLetters = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-  ];
+  let validLetters = ["a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9"];
   for (let i = 1; i < colorValue.length; i++) {
     for (let j = 0; j < validLetters.length; j++) {
       if (colorValue[i].toUpperCase() === validLetters[j].toUpperCase()) {
@@ -441,55 +426,51 @@ function colorCharactersIsValid() {
   return test;
 }
 
-function rightAnswerIsValid() {
-  let rightAnswerValue = document.querySelector(".right-answer").value;
+function rightAnswerIsValid(rightAnswerReceived) {
+  let inputParent = rightAnswerReceived.parentNode.parentNode.parentNode;
+  let rightAnswerValue = inputParent.querySelector(".right-answer").value;
   if (rightAnswerValue === "") {
     alert("A caixa de resposta correta não pode estar vazia!");
-    document.querySelector(".right-img-url").disabled = true;
+    inputParent.querySelector(".right-img-url").disabled = true;
   }
-  document.querySelector(".right-img-url").disabled = false;
+  inputParent.querySelector(".right-img-url").disabled = false;
 }
 
-function rightAnswerUrlIsValid() {
-  let rightAnswerUrlValue = document.querySelector(".right-img-url").value;
-  if (
-    rightAnswerUrlValue.startsWith("http") &&
-    (rightAnswerUrlValue.endsWith(".jpg") ||
-      rightAnswerUrlValue.endsWith(".jpeg") ||
-      rightAnswerUrlValue.endsWith(".png"))
-  ) {
+function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
+  let inputParent = rightAnswerUrlReceived.parentNode.parentNode.parentNode;
+  let rightAnswerUrlValue = inputParent.querySelector(".right-img-url").value;
+  if (rightAnswerUrlValue.startsWith("http") && ((rightAnswerUrlValue.endsWith(".jpg")) || (rightAnswerUrlValue.endsWith(".jpeg")) || (rightAnswerUrlValue.endsWith(".png")))) {
   } else {
     alert("Preencha corretamente a URL da resposta certa!");
-    document.querySelector(".wrong-answer1").disabled = true;
+    inputParent.querySelector(".wrong-answer1").disabled = true;
   }
-  document.querySelector(".wrong-answer1").disabled = false;
+  inputParent.querySelector(".wrong-answer1").disabled = false;
 }
 
-function wrongAnswerIsValid() {
-  let wrongAnswerValue = document.querySelector(".wrong-answer1").value;
+function wrongAnswerIsValid(wrongAnswerReceived) {
+  let inputParent = wrongAnswerReceived.parentNode.parentNode.parentNode;
+  let wrongAnswerValue = inputParent.querySelector(".wrong-answer1").value;
   if (wrongAnswerValue === "") {
     alert("Precisa existir pelo menos uma resposta errada!");
-    document.querySelector(".wrong-img-url1").disabled = true;
+    inputParent.querySelector(".wrong-img-url1").disabled = true;
   }
-  document.querySelector(".wrong-img-url1").disabled = false;
+  inputParent.querySelector(".wrong-img-url1").disabled = false;
 }
 
-function wrongAnswerUrlIsValid() {
-  let wrongAnswerUrlValue = document.querySelector(".wrong-img-url1").value;
-  if (
-    wrongAnswerUrlValue.startsWith("http") &&
-    (wrongAnswerUrlValue.endsWith(".jpg") ||
-      wrongAnswerUrlValue.endsWith(".jpeg") ||
-      wrongAnswerUrlValue.endsWith(".png"))
-  ) {
-    goToPageCreateLevels();
-  } else {
-    alert("Preencha corretamente a URL da primeira resposta incorreta!");
-  }
-}
+function wrongAnswerUrlIsValid(wrongAnswerUrlReceived) {
+  let inputParent = wrongAnswerUrlReceived.parentNode.parentNode.parentNode;
+  let wrongAnswerUrlValue = inputParent.querySelector(".wrong-img-url1").value;
+    if (wrongAnswerUrlValue.startsWith("http") && ((wrongAnswerUrlValue.endsWith(".jpg")) || (wrongAnswerUrlValue.endsWith(".jpeg")) || (wrongAnswerUrlValue.endsWith(".png")))) {
+      goToPageCreateLevels();
+    } else {
+      alert("Preencha corretamente as URLs das respostas incorretas!");
+    }  
+} 
+/* NÃO ESTOU CONSEGUINDO PENSAR EM COMO FAZER ESSA VALIDAÇÃO 
+PQ ERA CLICANDO NO BOTÃO, MAS TEM MAIS DE UMA PRA AVALIAR */
 
 function createLevels() {
-  wrongAnswerUrlIsValid();
+  wrongAnswerUrlIsValid(); /* ASSIM NÃO VAI DAR CERTO */
 }
 
 function goToPageCreateLevels() {
@@ -545,33 +526,35 @@ function goToPageCreateLevels() {
 
 function appearLevelsInputs(div) {
   let levelsInput = div.parentNode.children[1];
-  console.log(levelsInput)
   levelsInput.classList.remove("hide");
 }
 
 /* tela de níveis */
 
-function levelTitleIsValid() {
-  let levelTitle = document.querySelector(".level-title").value;
+function levelTitleIsValid(titleReceived) {
+  let inputParent = titleReceived.parentNode.parentNode;
+  let levelTitle = inputParent.querySelector(".level-title").value;
   if (levelTitle.length < 10) {
     alert("O título precisa ter, no mínimo 10 caracteres!");
-    document.querySelector(".hit-percentage").disabled = true;
+    inputParent.querySelector(".hit-percentage").disabled = true;
   }
-  document.querySelector(".hit-percentage").disabled = false;
+  inputParent.querySelector(".hit-percentage").disabled = false;
 }
 
-function hitPercentageIsValid() {
-  let hit = document.querySelector(".hit-percentage").value;
+function hitPercentageIsValid(hitPercentageReceived) {
+  let inputParent = hitPercentageReceived.parentNode.parentNode;
+  let hit = inputParent.querySelector(".hit-percentage").value;
   hit = parseInt(hit);
   if (hit < 0 || hit > 100 || isNaN(hit) === true) {
     alert("Escolha um número entre 0 e 100!");
-    document.querySelector(".level-img-url").disabled = true;
+    inputParent.querySelector(".level-img-url").disabled = true;
   }
-  document.querySelector(".level-img-url").disabled = false;
+  inputParent.querySelector(".level-img-url").disabled = false;
 }
 
-function levelUrlIsValid() {
-  let levelUrl = document.querySelector(".level-img-url").value;
+function levelUrlIsValid(levelUrlReceived) {
+  let inputParent = levelUrlReceived.parentNode.parentNode;
+  let levelUrl = inputParent.querySelector(".level-img-url").value;
   if (
     levelUrl.startsWith("http") &&
     (levelUrl.endsWith(".jpg") ||
@@ -580,13 +563,14 @@ function levelUrlIsValid() {
   ) {
   } else {
     alert("Preencha a URL do primeiro nível corretamente!");
-    document.querySelector(".level-description").disabled = true;
+    inputParent.querySelector(".level-description").disabled = true;
   }
-  document.querySelector(".level-description").disabled = false;
+  inputParent.querySelector(".level-description").disabled = false;
 }
 
-function levelDescriptionIsValid() {
-  let levelDescription = document.querySelector(".level-description").value;
+function levelDescriptionIsValid(levelDescriptionReceived) {
+  let inputParent = levelDescriptionReceived.parentNode.parentNode;
+  let levelDescription = inputParent.querySelector(".level-description").value;
   if (levelDescription.length < 30) {
     alert("A descrição precisa ter, no mínimo 30 caracteres!");
   } else {
@@ -612,6 +596,10 @@ function renderNewQuizz() {
     <h1 class="name-quizzes">${titleValue}</h1>
   </div>`; /* PRECISA TER O ID DO QUIZZ QUE SERÁ CRIANDO QUANDO DER O POST: id="NÚMERO" */
 }
+
+/* POST */
+
+
 
 //retorna pra home - tela 2 listando os quizzes do usuário
 function returnHomeReloaded() {

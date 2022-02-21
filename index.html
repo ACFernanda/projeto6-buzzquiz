@@ -75,7 +75,7 @@
     </div>
 
     <!------ HTML TELA 3 ------->
-    <section class="quizz-basic-information screen3">
+    <section class="quizz-basic-information screen3 hide">
       <h2><b>Comece pelo começo</b></h2>
 
       <ul>
@@ -104,99 +104,95 @@
       <main>
         <h3>Pergunta 1</h3>
 
-        <ul>
-          <li>
-            <input
-              class="question-text"
-              type="text"
-              placeholder="Texto da pergunta"
-            />
-          </li>
-          <li>
-            <input
-              onclick="textIsValid()"
-              class="question-color"
-              type="text"
-              placeholder="Cor de fundo da pergunta"
-            />
-          </li>
-        </ul>
-
-        <h3>Resposta correta</h3>
-
-        <ul>
-          <li>
-            <input
-              onclick="colorIsValid()"
-              class="right-answer"
-              type="text"
-              placeholder="Resposta correta"
-            />
-          </li>
-          <li>
-            <input
-              onclick="rightAnswerIsValid()"
-              class="right-img-url"
-              type="text"
-              placeholder="URL da imagem"
-            />
-          </li>
-        </ul>
-
-        <h3>Respostas incorretas</h3>
-
-        <ul>
-          <li>
-            <input
-              onclick="rightAnswerUrlIsValid()"
-              class="wrong-answer1"
-              type="text"
-              placeholder="Resposta incorreta 1"
-            />
-          </li>
-          <li>
-            <input
-              onclick="wrongAnswerIsValid()"
-              class="wrong-img-url1"
-              type="text"
-              placeholder="URL da imagem 1"
-            />
-          </li>
-        </ul>
-
-        <ul>
-          <li>
-            <input
-              class="wrong-answer2"
-              type="text"
-              placeholder="Resposta incorreta 2"
-            />
-          </li>
-          <li>
-            <input
-              class="wrong-img-url2"
-              type="text"
-              placeholder="URL da imagem 2"
-            />
-          </li>
-        </ul>
-
-        <ul>
-          <li>
-            <input
-              class="wrong-answer3"
-              type="text"
-              placeholder="Resposta incorreta 3"
-            />
-          </li>
-          <li>
-            <input
-              class="wrong-img-url3"
-              type="text"
-              placeholder="URL da imagem 3"
-            />
-          </li>
-        </ul>
+        <div>
+          <ul>
+            <li>
+              <input
+                class="question-text"
+                type="text"
+                placeholder="Texto da pergunta"
+              />
+            </li>
+            <li>
+              <input
+                onclick="textIsValid(this)"
+                class="question-color"
+                type="text"
+                placeholder="Cor de fundo da pergunta"
+              />
+            </li>
+          </ul>
+          <h3>Resposta correta</h3>
+          <ul>
+            <li>
+              <input
+                onclick="colorIsValid(this)"
+                class="right-answer"
+                type="text"
+                placeholder="Resposta correta"
+              />
+            </li>
+            <li>
+              <input
+                onclick="rightAnswerIsValid(this)"
+                class="right-img-url"
+                type="text"
+                placeholder="URL da imagem"
+              />
+            </li>
+          </ul>
+          <h3>Respostas incorretas</h3>
+          <ul>
+            <li>
+              <input
+                onclick="rightAnswerUrlIsValid(this)"
+                class="wrong-answer1"
+                type="text"
+                placeholder="Resposta incorreta 1"
+              />
+            </li>
+            <li>
+              <input
+                onclick="wrongAnswerIsValid(this)"
+                class="wrong-img-url1"
+                type="text"
+                placeholder="URL da imagem 1"
+              />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <input
+                class="wrong-answer2"
+                type="text"
+                placeholder="Resposta incorreta 2"
+              />
+            </li>
+            <li>
+              <input
+                class="wrong-img-url2"
+                type="text"
+                placeholder="URL da imagem 2"
+              />
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <input
+                class="wrong-answer3"
+                type="text"
+                placeholder="Resposta incorreta 3"
+              />
+            </li>
+            <li>
+              <input
+                class="wrong-img-url3"
+                type="text"
+                placeholder="URL da imagem 3"
+              />
+            </li>
+          </ul>
+        </div>
 
         <div>
           <div onclick="appearQuestionsInputs(this)" class="questions">
@@ -213,19 +209,14 @@
                 />
               </li>
               <li>
-                <input
-                  onclick="textIsValid()"
-                  class="question-color"
-                  type="text"
-                  placeholder="Cor de fundo da pergunta"
-                />
+                <input onclick="textIsValid(this)" class="question-color" type="text" placeholder="Cor de fundo da pergunta"/>
               </li>
             </ul>
             <h3>Resposta correta</h3>
             <ul>
               <li>
                 <input
-                  onclick="colorIsValid()"
+                  onclick="colorIsValid(this)"
                   class="right-answer"
                   type="text"
                   placeholder="Resposta correta"
@@ -233,7 +224,7 @@
               </li>
               <li>
                 <input
-                  onclick="rightAnswerIsValid()"
+                  onclick="rightAnswerIsValid(this)"
                   class="right-img-url"
                   type="text"
                   placeholder="URL da imagem"
@@ -244,7 +235,7 @@
             <ul>
               <li>
                 <input
-                  onclick="rightAnswerUrlIsValid()"
+                  onclick="rightAnswerUrlIsValid(this)"
                   class="wrong-answer1"
                   type="text"
                   placeholder="Resposta incorreta 1"
@@ -252,7 +243,7 @@
               </li>
               <li>
                 <input
-                  onclick="wrongAnswerIsValid()"
+                  onclick="wrongAnswerIsValid(this)"
                   class="wrong-img-url1"
                   type="text"
                   placeholder="URL da imagem 1"
@@ -310,7 +301,7 @@
               </li>
               <li>
                 <input
-                  onclick="textIsValid()"
+                  onclick="textIsValid(this)"
                   class="question-color"
                   type="text"
                   placeholder="Cor de fundo da pergunta"
@@ -321,7 +312,7 @@
             <ul>
               <li>
                 <input
-                  onclick="colorIsValid()"
+                  onclick="colorIsValid(this)"
                   class="right-answer"
                   type="text"
                   placeholder="Resposta correta"
@@ -329,7 +320,7 @@
               </li>
               <li>
                 <input
-                  onclick="rightAnswerIsValid()"
+                  onclick="rightAnswerIsValid(this)"
                   class="right-img-url"
                   type="text"
                   placeholder="URL da imagem"
@@ -340,7 +331,7 @@
             <ul>
               <li>
                 <input
-                  onclick="rightAnswerUrlIsValid()"
+                  onclick="rightAnswerUrlIsValid(this)"
                   class="wrong-answer1"
                   type="text"
                   placeholder="Resposta incorreta 1"
@@ -348,7 +339,7 @@
               </li>
               <li>
                 <input
-                  onclick="wrongAnswerIsValid()"
+                  onclick="wrongAnswerIsValid(this)"
                   class="wrong-img-url1"
                   type="text"
                   placeholder="URL da imagem 1"
@@ -394,44 +385,46 @@
       <button onclick="createLevels()">Prosseguir pra criar níveis</button>
     </section>
 
-    <section class="quizz-levels screen3 hide">
+    <section class="quizz-levels screen3">
       <h2><b>Agora, decida os níveis!</b></h2>
 
       <main>
         <h3>Nível 1</h3>
 
-        <ul>
-          <li>
-            <input
-              class="level-title"
-              type="text"
-              placeholder="Título do nível"
-            />
-          </li>
-          <li>
-            <input
-              onclick="levelTitleIsValid()"
-              class="hit-percentage"
-              type="text"
-              placeholder="% de acerto mínima"
-            />
-          </li>
-          <li>
-            <input
-              onclick="hitPercentageIsValid()"
-              class="level-img-url"
-              type="text"
-              placeholder="URL da imagem do nível"
-            />
-          </li>
-          <li>
-            <textarea
-              onclick="levelUrlIsValid()"
-              class="level-description"
-              placeholder="Descrição do nível"
-            ></textarea>
-          </li>
-        </ul>
+        <div>
+          <ul>
+            <li>
+              <input
+                class="level-title"
+                type="text"
+                placeholder="Título do nível"
+              />
+            </li>
+            <li>
+              <input
+                onclick="levelTitleIsValid(this)"
+                class="hit-percentage"
+                type="text"
+                placeholder="% de acerto mínima"
+              />
+            </li>
+            <li>
+              <input
+                onclick="hitPercentageIsValid(this)"
+                class="level-img-url"
+                type="text"
+                placeholder="URL da imagem do nível"
+              />
+            </li>
+            <li>
+              <textarea
+                onclick="levelUrlIsValid(this)"
+                class="level-description"
+                placeholder="Descrição do nível"
+              ></textarea>
+            </li>
+          </ul>
+        </div>
 
         <div>
           <div onclick="appearLevelsInputs(this)" class="questions">
@@ -450,7 +443,7 @@
               </li>
               <li>
                 <input
-                  onclick="levelTitleIsValid()"
+                  onclick="levelTitleIsValid(this)"
                   class="hit-percentage"
                   type="text"
                   placeholder="% de acerto mínima"
@@ -458,7 +451,7 @@
               </li>
               <li>
                 <input
-                  onclick="hitPercentageIsValid()"
+                  onclick="hitPercentageIsValid(this)"
                   class="level-img-url"
                   type="text"
                   placeholder="URL da imagem do nível"
@@ -466,7 +459,7 @@
               </li>
               <li>
                 <textarea
-                  onclick="levelUrlIsValid()"
+                  onclick="levelUrlIsValid(this)"
                   class="level-description"
                   placeholder="Descrição do nível"
                 ></textarea>
