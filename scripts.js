@@ -427,19 +427,30 @@ function textIsValid(textReceived) {
 }
 
 function colorIsValid(colorReceived) {
-  colorCharactersIsValid();
+  //colorCharactersIsValid();
   let inputParent = colorReceived.parentNode.parentNode.parentNode;
   colorValue = inputParent.querySelector(".question-color").value;
-  if (colorValue.length !== 7 || !colorValue.startsWith("#") || test !== 6) {
+  if (!(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue))){
     alert("A cor precisa ser colocada em modelo hexadecimal!");
-    test = 0;
     inputParent.querySelector(".right-answer").disabled = true;
+    console.log(test);
+  } else {
+    inputParent.querySelector(".right-answer").disabled = false;
+    colorQuestionArray.push(colorValue);
+    console.log(colorQuestionArray);
   }
-  inputParent.querySelector(".right-answer").disabled = false;
-  colorQuestionArray.push(colorValue);
+  /*if ((colorValue.length !== 7) || (!colorValue.startsWith("#")) || (test !== 6)) {
+    alert("A cor precisa ser colocada em modelo hexadecimal!");
+    inputParent.querySelector(".right-answer").disabled = true;
+    console.log(test);
+  } else {
+    inputParent.querySelector(".right-answer").disabled = false;
+    colorQuestionArray.push(colorValue);
+    console.log(colorQuestionArray);
+  }*/
 }
 
-function colorCharactersIsValid() {
+/*function colorCharactersIsValid() {
   let validLetters = ["a","b","c","d","e","f","0","1","2","3","4","5","6","7","8","9"];
   for (let i = 1; i < colorValue.length; i++) {
     for (let j = 0; j < validLetters.length; j++) {
@@ -449,7 +460,7 @@ function colorCharactersIsValid() {
     }
   }
   return test;
-}
+}*/
 
 function rightAnswerIsValid(rightAnswerReceived) {
   let inputParent = rightAnswerReceived.parentNode.parentNode.parentNode;
@@ -484,22 +495,27 @@ function wrongAnswerIsValid(wrongAnswerReceived) {
   inputParent.querySelector(".wrong-img-url1").disabled = false;
 }
 
-function wrongAnswerUrlIsValid(wrongAnswerUrlReceived) {
-  let inputParent = wrongAnswerUrlReceived.parentNode.parentNode.parentNode;
-  let wrongAnswerUrlValue = inputParent.querySelector(".wrong-img-url1").value;
-    if (wrongAnswerUrlValue.startsWith("http") && ((wrongAnswerUrlValue.endsWith(".jpg")) || (wrongAnswerUrlValue.endsWith(".jpeg")) || (wrongAnswerUrlValue.endsWith(".png")))) {
-      goToPageCreateLevels();
-    } else {
-      alert("Preencha corretamente as URLs das respostas incorretas!");
+function wrongAnswerUrlIsValid() {
+  let wrongAnswerUrlValue = document.querySelectorAll(".wrong-img-url1");
+  let verification = 0;
+  for(let i = 0; i < questionsNumber; i++){
+    if (wrongAnswerUrlValue[i].value.startsWith("http") && ((wrongAnswerUrlValue[i].value.endsWith(".jpg")) || (wrongAnswerUrlValue[i].value.endsWith(".jpeg")) || (wrongAnswerUrlValue[i].value.endsWith(".png")))) {
+      verification ++
     }  
+  }
+
+  if(verification === questionsNumber){
+    goToPageCreateLevels();
+  } else {
+    alert("Preencha corretamente as URLs das respostas incorretas!");
+  }
+  
 } 
-/* NÃO ESTOU CONSEGUINDO PENSAR EM COMO FAZER ESSA VALIDAÇÃO 
-PQ ERA CLICANDO NO BOTÃO, MAS TEM MAIS DE UMA PRA AVALIAR */
 
 createSentObject();
 
 function createLevels() {
-  wrongAnswerUrlIsValid(); /* ASSIM NÃO VAI DAR CERTO */
+  wrongAnswerUrlIsValid(); 
 }
 
 function goToPageCreateLevels() {
@@ -597,13 +613,19 @@ function levelUrlIsValid(levelUrlReceived) {
   inputParent.querySelector(".level-description").disabled = false;
 }
 
-function levelDescriptionIsValid(levelDescriptionReceived) {
-  let inputParent = levelDescriptionReceived.parentNode.parentNode;
-  let levelDescription = inputParent.querySelector(".level-description").value;
-  if (levelDescription.length < 30) {
-    alert("A descrição precisa ter, no mínimo 30 caracteres!");
-  } else {
+function levelDescriptionIsValid() {
+  let levelDescription = document.querySelectorAll(".level-description");
+  let verification = 0;
+  for(let i = 0; i < levelsNumber; i++){
+    if (!(levelDescription[i].value.length < 30)) {
+      verification ++
+    } 
+  }
+
+  if (verification === levelsNumber) {
     goToPageConcludeCreation();
+  } else {
+    alert("A descrição precisa ter, no mínimo 30 caracteres!");
   }
 }
 
