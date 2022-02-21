@@ -250,6 +250,14 @@ let url = "";
 let sentObject = "";
 let questionsArray = [];
 let levelsArray = [];
+let textQuestionArray = [];
+let colorQuestionArray = [];
+let rightAnswerQuestionArray = [];
+let rightAnswerUrlQuestionArray = [];
+let wrongAnswerQuestionArray = [];
+let wrongAnswerUrlQuestionArray = [];
+let optionalWrongAnswerQuestionArray = [];
+let optionalWrongAnswerUrlQuestionArray = [];
 
 /* tela informações básicas */
 
@@ -398,15 +406,6 @@ function goToPageCreateQuestions() {
 
 /* tela de perguntas */
 
-let textQuestionArray = [];
-let colorQuestionArray = [];
-let rightAnswerQuestionArray = [];
-let rightAnswerUrlQuestionArray = [];
-let wrongAnswerQuestionArray = [];
-let wrongAnswerUrlQuestionArray = [];
-let optionalWrongAnswerQuestionArray = [];
-let optionalWrongAnswerUrlQuestionArray = [];
-
 function createSentObject(){
   for(let i = 0; i < questionsNumber; i++){
     sentObject.title = title;
@@ -509,8 +508,10 @@ function wrongAnswerIsValid(wrongAnswerReceived) {
 function optionalWrongAnswerIsValid(optionalWrongAnswerReceived) {
   let inputParent = optionalWrongAnswerReceived.parentNode.parentNode.parentNode;
   let optionalWrongAnswer = inputParent.querySelectorAll(".wrong-answer");
-  for(let i = 0; i < questionsNumber*2; i++){
-    if((optionalWrongAnswer[i].value) !== ""){
+  optionalWrongAnswer = Array.from(optionalWrongAnswer);
+  for(let i = 0; i < optionalWrongAnswer.length; i++){
+    console.log(optionalWrongAnswer[i]);
+    if(optionalWrongAnswer[i].value !== ""){
       optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
     }
   }
@@ -519,6 +520,7 @@ function optionalWrongAnswerIsValid(optionalWrongAnswerReceived) {
 
 function wrongAnswerUrlIsValid() {
   let wrongAnswerUrlValue = document.querySelectorAll(".wrong-img-url1");
+  wrongAnswerUrlValue = Array.from(wrongAnswerUrlValue);
   let verification = 0;
   for(let i = 0; i < questionsNumber; i++){
     if (wrongAnswerUrlValue[i].value.startsWith("http") && ((wrongAnswerUrlValue[i].value.endsWith(".jpg")) || (wrongAnswerUrlValue[i].value.endsWith(".jpeg")) || (wrongAnswerUrlValue[i].value.endsWith(".png")))) {
@@ -537,6 +539,7 @@ function wrongAnswerUrlIsValid() {
 
 function optionalWrongAnswerUrlIsValid() {
   let optionalWrongAnswerUrl = document.querySelectorAll(".wrong-img-url");
+  optionalWrongAnswerUrl = Array.from(optionalWrongAnswerUrl);
   if (optionalWrongAnswerUrl[i].value.startsWith("http") && ((optionalWrongAnswerUrl[i].value.endsWith(".jpg")) || (optionalWrongAnswerUrl[i].value.endsWith(".jpeg")) || (optionalWrongAnswerUrl[i].value.endsWith(".png")))){
     for(let i = 0; i < questionsNumber*2; i++){
       optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
