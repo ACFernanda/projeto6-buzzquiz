@@ -249,8 +249,6 @@ let url = "";
 let sentObject = "";
 let questionsArray = [];
 let levelsArray = [];
-sentObject.title = title;
-sentObject.image = url;
 
 /* tela informações básicas */
 
@@ -336,14 +334,14 @@ function questionsNumberIsValid() {
           <ul>
             <li data-identifier="question">
               <input
-                class="wrong-answer2"
+                class="wrong-answer"
                 type="text"
                 placeholder="Resposta incorreta 2"
               />
             </li>
             <li data-identifier="question">
-              <input
-                class="wrong-img-url2"
+              <input onclick="optionalWrongAnswerIsValid(this)"
+                class="wrong-img-url"
                 type="text"
                 placeholder="URL da imagem 2"
               />
@@ -353,14 +351,14 @@ function questionsNumberIsValid() {
           <ul>
             <li data-identifier="question">
               <input
-                class="wrong-answer3"
+                class="wrong-answer"
                 type="text"
                 placeholder="Resposta incorreta 3"
               />
             </li>
             <li data-identifier="question">
-              <input
-                class="wrong-img-url3"
+              <input onclick="optionalWrongAnswerIsValid(this)"
+                class="wrong-img-url"
                 type="text"
                 placeholder="URL da imagem 3"
               />
@@ -403,9 +401,15 @@ let textQuestionArray = [];
 let colorQuestionArray = [];
 let rightAnswerQuestionArray = [];
 let rightAnswerUrlQuestionArray = [];
+let wrongAnswerQuestionArray = [];
+let wrongAnswerUrlQuestionArray = [];
+let optionalWrongAnswerQuestionArray = [];
+let optionalWrongAnswerUrlQuestionArray = [];
 
 function createSentObject(){
   for(let i = 0; i < questionsNumber; i++){
+    sentObject.title = title;
+    sentObject.image = url;
     sentObject.questions[i].title = textQuestionArray[i];
     sentObject.questions[i].color = colorQuestionArray[i];
     sentObject.questions[i].answers[i].text = rightAnswerQuestionArray[i];
@@ -421,9 +425,11 @@ function textIsValid(textReceived) {
   if (title.length < 20) {
     alert("O texto precisa ter, no mínimo 20 caracteres!");
     inputParent.querySelector(".question-color").disabled = true;
+  } else {
+    textQuestionArray.push(title);
+    console.log(textQuestionArray);
   }
   inputParent.querySelector(".question-color").disabled = false;
-  textQuestionArray.push(title);
 }
 
 function colorIsValid(colorReceived) {
@@ -433,12 +439,11 @@ function colorIsValid(colorReceived) {
   if (!(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue))){
     alert("A cor precisa ser colocada em modelo hexadecimal!");
     inputParent.querySelector(".right-answer").disabled = true;
-    console.log(test);
   } else {
-    inputParent.querySelector(".right-answer").disabled = false;
     colorQuestionArray.push(colorValue);
     console.log(colorQuestionArray);
   }
+  inputParent.querySelector(".right-answer").disabled = false;
   /*if ((colorValue.length !== 7) || (!colorValue.startsWith("#")) || (test !== 6)) {
     alert("A cor precisa ser colocada em modelo hexadecimal!");
     inputParent.querySelector(".right-answer").disabled = true;
@@ -468,9 +473,11 @@ function rightAnswerIsValid(rightAnswerReceived) {
   if (rightAnswerValue === "") {
     alert("A caixa de resposta correta não pode estar vazia!");
     inputParent.querySelector(".right-img-url").disabled = true;
+  } else {
+    rightAnswerQuestionArray.push(rightAnswerValue);
+    console.log(rightAnswerQuestionArray);
   }
   inputParent.querySelector(".right-img-url").disabled = false;
-  rightAnswerQuestionArray.push(rightAnswerValue);
 }
 
 function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
@@ -483,6 +490,7 @@ function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
   }
   inputParent.querySelector(".wrong-answer1").disabled = false;
   rightAnswerUrlQuestionArray.push(rightAnswerUrlValue);
+  console.log(rightAnswerUrlQuestionArray);
 }
 
 function wrongAnswerIsValid(wrongAnswerReceived) {
@@ -493,6 +501,19 @@ function wrongAnswerIsValid(wrongAnswerReceived) {
     inputParent.querySelector(".wrong-img-url1").disabled = true;
   }
   inputParent.querySelector(".wrong-img-url1").disabled = false;
+  wrongAnswerQuestionArray.push(wrongAnswerValue);
+  console.log(wrongAnswerQuestionArray);
+}
+
+function optionalWrongAnswerIsValid(optionalWrongAnswerReceived) {
+  let inputParent = optionalWrongAnswerReceived.parentNode.parentNode.parentNode;
+  let optionalWrongAnswer = inputParent.querySelectorAll(".wrong-answer");
+  for(let i = 0; i < questionsNumber*2; i++){
+    if((optionalWrongAnswer[i].value) !== ""){
+      optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
+    }
+  }
+  console.log(optionalWrongAnswerQuestionArray)
 }
 
 function wrongAnswerUrlIsValid() {
@@ -505,17 +526,28 @@ function wrongAnswerUrlIsValid() {
   }
 
   if(verification === questionsNumber){
+    wrongAnswerUrlQuestionArray.push(wrongAnswerUrlValue);
     goToPageCreateLevels();
   } else {
     alert("Preencha corretamente as URLs das respostas incorretas!");
   }
-  
+  console.log(wrongAnswerUrlQuestionArray)
 } 
 
-createSentObject();
+function optionalWrongAnswerUrlIsValid() {
+  let optionalWrongAnswerUrl = document.querySelectorAll(".wrong-img-url");
+  if (optionalWrongAnswerUrl[i].value.startsWith("http") && ((optionalWrongAnswerUrl[i].value.endsWith(".jpg")) || (optionalWrongAnswerUrl[i].value.endsWith(".jpeg")) || (optionalWrongAnswerUrl[i].value.endsWith(".png")))){
+    for(let i = 0; i < questionsNumber*2; i++){
+      optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
+    }
+  }
+  console.log(optionalWrongAnswerQuestionArray);
+}
 
 function createLevels() {
   wrongAnswerUrlIsValid(); 
+  optionalWrongAnswerUrlIsValid();
+  createSentObject();
 }
 
 function goToPageCreateLevels() {
@@ -644,7 +676,7 @@ function renderNewQuizz() {
   newQuizzHTML.innerHTML = `
   <div class="one-quizz" data-identifier="quizz-card">
     <img src="${url}" class="img-quizzes"  /> 
-    <h1 class="name-quizzes">${titleValue}</h1>
+    <h1 class="name-quizzes">${title}</h1>
   </div>`; /* PRECISA TER O ID DO QUIZZ QUE SERÁ CRIANDO QUANDO DER O POST: id="NÚMERO" */
 }
 
