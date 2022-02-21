@@ -1,6 +1,7 @@
 //* Renderizar todos os quizzes - TELA 1 *//
 
 let renderQuizz = [];
+let userQuizz = [];
 
 const promise = axios.get(
   "https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes"
@@ -699,4 +700,19 @@ function showUserQuizzes() {
     newQuizzBox.classList.add("hide");
     userQuizzesLayout.classList.remove("hide");
   }
+}
+
+
+/// a testar após enviar o quizz pro servidor
+function saveUserQuizz(quiz) {
+  const quizString = JSON.stringify(quiz);
+  localStorage.setItem(quiz.data.id.toString(), quizString);
+  loadUserQuizz();
+}
+
+function loadUserQuizz() {
+  for (let i = 0; i < localStorage.length; i++) {
+      userQuiz.push(localStorage.getItem(localStorage.key(i)));
+  }
+  console.log(userQuiz);
 }
