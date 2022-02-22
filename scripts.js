@@ -257,7 +257,7 @@ let levelDescriptionArray = [];
 
 function titleIsValid() {
   title = document.querySelector(".quizz-title").value;
-  if ((title.length < 20) || (title.length > 65)) {
+  if (title.length < 20 || title.length > 65) {
     alert("O título precisa ter entre 20 e 65 caracteres!");
     document.querySelector(".quizz-img-url").disabled = true;
   }
@@ -266,7 +266,10 @@ function titleIsValid() {
 
 function urlIsValid() {
   url = document.querySelector(".quizz-img-url").value;
-  if (url.startsWith("http") && ((url.endsWith(".jpg")) || (url.endsWith(".jpeg")) || (url.endsWith(".png")))) {
+  if (
+    url.startsWith("http") &&
+    (url.endsWith(".jpg") || url.endsWith(".jpeg") || url.endsWith(".png"))
+  ) {
   } else {
     alert("Preencha a URL corretamente!");
     document.querySelector(".questions-number").disabled = true;
@@ -277,7 +280,7 @@ function urlIsValid() {
 function questionsNumberIsValid() {
   questionsNumber = document.querySelector(".questions-number").value;
   questionsNumber = parseInt(questionsNumber);
-  if ((questionsNumber < 3) || (isNaN(questionsNumber) === true)) {
+  if (questionsNumber < 3 || isNaN(questionsNumber) === true) {
     alert("Use números a partir de 3");
     document.querySelector(".levels-number").disabled = true;
   }
@@ -384,7 +387,7 @@ function levelsNumberIsValid() {
   levelsNumber = parseInt(levelsNumber);
   if (levelsNumber < 2 || isNaN(levelsNumber) === true) {
     alert("Você precisa de, no mínimo, 2 níveis!");
-  } else if ((levelsNumber >= 2)) {
+  } else if (levelsNumber >= 2) {
     goToPageCreateQuestions();
   }
 }
@@ -413,7 +416,7 @@ function textIsValid(textReceived) {
 function colorIsValid(colorReceived) {
   let inputParent = colorReceived.parentNode.parentNode.parentNode;
   colorValue = inputParent.querySelector(".question-color").value;
-  if (!(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue))){
+  if (!/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(colorValue)) {
     alert("A cor precisa ser colocada em modelo hexadecimal!");
     inputParent.querySelector(".right-answer").disabled = true;
   } else {
@@ -437,7 +440,12 @@ function rightAnswerIsValid(rightAnswerReceived) {
 function rightAnswerUrlIsValid(rightAnswerUrlReceived) {
   let inputParent = rightAnswerUrlReceived.parentNode.parentNode.parentNode;
   let rightAnswerUrlValue = inputParent.querySelector(".right-img-url").value;
-  if (rightAnswerUrlValue.startsWith("http") && ((rightAnswerUrlValue.endsWith(".jpg")) || (rightAnswerUrlValue.endsWith(".jpeg")) || (rightAnswerUrlValue.endsWith(".png")))) {
+  if (
+    rightAnswerUrlValue.startsWith("http") &&
+    (rightAnswerUrlValue.endsWith(".jpg") ||
+      rightAnswerUrlValue.endsWith(".jpeg") ||
+      rightAnswerUrlValue.endsWith(".png"))
+  ) {
   } else {
     alert("Preencha corretamente a URL da resposta certa!");
     inputParent.querySelector(".wrong-answer1").disabled = true;
@@ -458,12 +466,13 @@ function wrongAnswerIsValid(wrongAnswerReceived) {
 }
 
 function optionalWrongAnswerIsValid(optionalWrongAnswerReceived) {
-  let inputParent = optionalWrongAnswerReceived.parentNode.parentNode.parentNode;
+  let inputParent =
+    optionalWrongAnswerReceived.parentNode.parentNode.parentNode;
   let optionalWrongAnswer = inputParent.querySelectorAll(".wrong-answer");
   optionalWrongAnswer = Array.from(optionalWrongAnswer);
-  for(let i = 0; i < optionalWrongAnswer.length; i++){
+  for (let i = 0; i < optionalWrongAnswer.length; i++) {
     console.log(optionalWrongAnswer[i]);
-    if(optionalWrongAnswer[i].value !== ""){
+    if (optionalWrongAnswer[i].value !== "") {
       optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
     }
   }
@@ -473,32 +482,42 @@ function wrongAnswerUrlIsValid() {
   let wrongAnswerUrlValue = document.querySelectorAll(".wrong-img-url1");
   wrongAnswerUrlValue = Array.from(wrongAnswerUrlValue);
   let verification = 0;
-  for(let i = 0; i < questionsNumber; i++){
-    if (wrongAnswerUrlValue[i].value.startsWith("http") && ((wrongAnswerUrlValue[i].value.endsWith(".jpg")) || (wrongAnswerUrlValue[i].value.endsWith(".jpeg")) || (wrongAnswerUrlValue[i].value.endsWith(".png")))) {
-      verification ++
-    }  
+  for (let i = 0; i < questionsNumber; i++) {
+    if (
+      wrongAnswerUrlValue[i].value.startsWith("http") &&
+      (wrongAnswerUrlValue[i].value.endsWith(".jpg") ||
+        wrongAnswerUrlValue[i].value.endsWith(".jpeg") ||
+        wrongAnswerUrlValue[i].value.endsWith(".png"))
+    ) {
+      verification++;
+    }
   }
 
-  if(verification === questionsNumber){
+  if (verification === questionsNumber) {
     wrongAnswerUrlQuestionArray.push(wrongAnswerUrlValue);
     goToPageCreateLevels();
   } else {
     alert("Preencha corretamente as URLs das respostas incorretas!");
   }
-} 
+}
 
 function optionalWrongAnswerUrlIsValid() {
   let optionalWrongAnswerUrl = document.querySelectorAll(".wrong-img-url");
   optionalWrongAnswerUrl = Array.from(optionalWrongAnswerUrl);
-  if (optionalWrongAnswerUrl[i].value.startsWith("http") && ((optionalWrongAnswerUrl[i].value.endsWith(".jpg")) || (optionalWrongAnswerUrl[i].value.endsWith(".jpeg")) || (optionalWrongAnswerUrl[i].value.endsWith(".png")))){
-    for(let i = 0; i < questionsNumber*2; i++){
+  if (
+    optionalWrongAnswerUrl[i].value.startsWith("http") &&
+    (optionalWrongAnswerUrl[i].value.endsWith(".jpg") ||
+      optionalWrongAnswerUrl[i].value.endsWith(".jpeg") ||
+      optionalWrongAnswerUrl[i].value.endsWith(".png"))
+  ) {
+    for (let i = 0; i < questionsNumber * 2; i++) {
       optionalWrongAnswerQuestionArray.push(optionalWrongAnswer[i].value);
     }
   }
 }
 
 function createLevels() {
-  wrongAnswerUrlIsValid(); 
+  wrongAnswerUrlIsValid();
   optionalWrongAnswerUrlIsValid();
 }
 
@@ -508,7 +527,7 @@ function goToPageCreateLevels() {
     main.innerHTML += `
     <div>
           <div data-identifier="expand" onclick="appearLevelsInputs(this)" class="questions">
-            <h3>Nível ${i+3}</h3>
+            <h3>Nível ${i + 3}</h3>
             <ion-icon name="create-outline"></ion-icon>
           </div>
 
@@ -547,7 +566,7 @@ function goToPageCreateLevels() {
             </ul>
           </div>
         </div>
-    `
+    `;
   }
   document.querySelector(".quizz-questions").classList.add("hide");
   document.querySelector(".quizz-levels").classList.remove("hide");
@@ -597,10 +616,10 @@ function levelDescriptionIsValid() {
   let levelDescription = document.querySelectorAll(".level-description");
   levelDescription = Array.from(levelDescription);
   let verification = 0;
-  for(let i = 0; i < levelsNumber; i++){
+  for (let i = 0; i < levelsNumber; i++) {
     if (!(levelDescription[i].value.length < 30)) {
-      verification ++
-    } 
+      verification++;
+    }
   }
 
   if (verification === levelsNumber) {
@@ -717,7 +736,7 @@ function saveUserQuizz(quiz) {
 
 function loadUserQuizz() {
   for (let i = 0; i < localStorage.length; i++) {
-      userQuiz.push(localStorage.getItem(localStorage.key(i)));
+    userQuizz.push(localStorage.getItem(localStorage.key(i)));
   }
-  console.log(userQuiz);
+  console.log(userQuizz);
 }
